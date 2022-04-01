@@ -1,0 +1,118 @@
+Constru Pathway .y. group1 group2 n1 n2 statistic p p.adj p.adj.signif
+Tertile 1 Myeloid dendritic cell activated Value 1 3 47 50 146 1.13e-13 4.407e-12 ****
+Tertile 1 B cell Value 1 3 47 50 858 0.0198 0.0472775510204082 *
+Tertile 1 T cell CD4+ memory Value 1 3 47 50 719 0.000603 0.001809 **
+Tertile 1 T cell CD4+ naive Value 1 3 47 50 1315.5 0.295 0.401337209302326 ns
+Tertile 1 T cell CD4+ (non-regulatory) Value 1 3 47 50 1185 0.943 0.951129310344828 ns
+Tertile 1 T cell CD4+ central memory Value 1 3 47 50 1460.5 0.0347 0.0766018867924528 ns
+Tertile 1 T cell CD4+ effector memory Value 1 3 47 50 380 6.72e-09 4.79011764705882e-08 ****
+Tertile 1 T cell CD8+ naive Value 1 3 47 50 1140 0.803 0.882916666666667 ns
+Tertile 1 T cell CD8+ Value 1 3 47 50 845 0.015 0.0365625 *
+Tertile 1 T cell CD8+ central memory Value 1 3 47 50 257 2.8e-11 5.46e-10 ****
+Tertile 1 T cell CD8+ effector memory Value 1 3 47 50 619.5 2.58e-05 0.00010062 ***
+Tertile 1 Class-switched memory B cell Value 1 3 47 50 1034 0.299 0.402103448275862 ns
+Tertile 1 Common lymphoid progenitor Value 1 3 47 50 1014 0.247 0.356707317073171 ns
+Tertile 1 Common myeloid progenitor Value 1 3 47 50 1336 0.225 0.343594936708861 ns
+Tertile 1 Myeloid dendritic cell Value 1 3 47 50 463.5 2.79e-07 1.41926086956522e-06 ****
+Tertile 1 Endothelial cell Value 1 3 47 50 1200 0.859 0.906486486486486 ns
+Tertile 1 Eosinophil Value 1 3 47 50 1305 0.336 0.4368 ns
+Tertile 1 Cancer associated fibroblast Value 1 3 47 50 1200 0.86 0.906486486486486 ns
+Tertile 1 Granulocyte-monocyte progenitor Value 1 3 47 50 977 0.119 0.207805970149254 ns
+Tertile 1 Hematopoietic stem cell Value 1 3 47 50 1149 0.854 0.906486486486486 ns
+Tertile 1 Macrophage Value 1 3 47 50 228 8.35e-12 2.442375e-10 ****
+Tertile 1 Macrophage M1 Value 1 3 47 50 267 5.72e-11 9.228375e-10 ****
+Tertile 1 Macrophage M2 Value 1 3 47 50 511.5 1.68e-06 7.56e-06 ****
+Tertile 1 Mast cell Value 1 3 47 50 1098 0.581 0.686636363636364 ns
+Tertile 1 B cell memory Value 1 3 47 50 1017 0.232 0.343594936708861 ns
+Tertile 1 Monocyte Value 1 3 47 50 537 2.67e-06 1.157e-05 ****
+Tertile 1 B cell naive Value 1 3 47 50 1018 0.23 0.343594936708861 ns
+Tertile 1 Neutrophil Value 1 3 47 50 1216 0.751 0.840171428571429 ns
+Tertile 1 NK cell Value 1 3 47 50 1133.5 0.754 0.840171428571429 ns
+Tertile 1 T cell NK Value 1 3 47 50 1022.5 0.272 0.3744 ns
+Tertile 1 Plasmacytoid dendritic cell Value 1 3 47 50 379 6.96e-09 4.79011764705882e-08 ****
+Tertile 1 B cell plasma Value 1 3 47 50 1192 0.905 0.930868421052632 ns
+Tertile 1 T cell gamma delta Value 1 3 47 50 719.5 0.000856 0.0025038 **
+Tertile 1 T cell CD4+ Th1 Value 1 3 47 50 1570 0.00395 0.0105034090909091 *
+Tertile 1 T cell CD4+ Th2 Value 1 3 47 50 1043 0.343 0.441 ns
+Tertile 1 T cell regulatory (Tregs) Value 1 3 47 50 1183 0.956 0.956 ns
+Tertile 1 immune score Value 1 3 47 50 269 6.31e-11 9.228375e-10 ****
+Tertile 1 stroma score Value 1 3 47 50 1032 0.304 0.404181818181818 ns
+Tertile 1 microenvironment score Value 1 3 47 50 550 6.55e-06 2.73696428571429e-05 ****
+Tertile 2 Myeloid dendritic cell activated Value 1 3 48 44 260 5.04e-10 4.212e-09 ****
+Tertile 2 B cell Value 1 3 48 44 864.5 0.134 0.227217391304348 ns
+Tertile 2 T cell CD4+ memory Value 1 3 48 44 693 0.00339 0.00922395348837209 **
+Tertile 2 T cell CD4+ naive Value 1 3 48 44 948 0.367 0.461709677419355 ns
+Tertile 2 T cell CD4+ (non-regulatory) Value 1 3 48 44 1211.5 0.214 0.338351351351351 ns
+Tertile 2 T cell CD4+ central memory Value 1 3 48 44 1222 0.165 0.268125 ns
+Tertile 2 T cell CD4+ effector memory Value 1 3 48 44 372 8.48e-08 4.50981818181818e-07 ****
+Tertile 2 T cell CD8+ naive Value 1 3 48 44 877.5 0.163 0.268125 ns
+Tertile 2 T cell CD8+ Value 1 3 48 44 820 0.061 0.123051724137931 ns
+Tertile 2 T cell CD8+ central memory Value 1 3 48 44 239.5 1.61e-10 1.56975e-09 ****
+Tertile 2 T cell CD8+ effector memory Value 1 3 48 44 837 0.0765 0.142071428571429 ns
+Tertile 2 Class-switched memory B cell Value 1 3 48 44 712 0.00661 0.0168123913043478 *
+Tertile 2 Common lymphoid progenitor Value 1 3 48 44 945 0.39 0.485425531914894 ns
+Tertile 2 Common myeloid progenitor Value 1 3 48 44 1233.5 0.131 0.225397058823529 ns
+Tertile 2 Myeloid dendritic cell Value 1 3 48 44 349 3.31e-08 1.93635e-07 ****
+Tertile 2 Endothelial cell Value 1 3 48 44 1036 0.878 0.917196428571429 ns
+Tertile 2 Eosinophil Value 1 3 48 44 1019 0.751 0.840171428571429 ns
+Tertile 2 Cancer associated fibroblast Value 1 3 48 44 1345 0.0241 0.0552882352941176 ns
+Tertile 2 Granulocyte-monocyte progenitor Value 1 3 48 44 1200 0.212 0.338351351351351 ns
+Tertile 2 Hematopoietic stem cell Value 1 3 48 44 1144 0.496 0.598268041237113 ns
+Tertile 2 Macrophage Value 1 3 48 44 314 6.69e-09 4.79011764705882e-08 ****
+Tertile 2 Macrophage M1 Value 1 3 48 44 330 1.42e-08 9.23e-08 ****
+Tertile 2 Macrophage M2 Value 1 3 48 44 574 0.000168 0.000578117647058824 ***
+Tertile 2 Mast cell Value 1 3 48 44 1241 0.149 0.249042857142857 ns
+Tertile 2 B cell memory Value 1 3 48 44 1085.5 0.812 0.882916666666667 ns
+Tertile 2 Monocyte Value 1 3 48 44 597 0.000258 0.000794368421052632 ***
+Tertile 2 B cell naive Value 1 3 48 44 854.5 0.0899 0.16182 ns
+Tertile 2 Neutrophil Value 1 3 48 44 1274 0.075 0.141532258064516 ns
+Tertile 2 NK cell Value 1 3 48 44 905 0.226 0.343594936708861 ns
+Tertile 2 T cell NK Value 1 3 48 44 824 0.0703 0.134837704918033 ns
+Tertile 2 Plasmacytoid dendritic cell Value 1 3 48 44 251.5 1.83e-10 1.647e-09 ****
+Tertile 2 B cell plasma Value 1 3 48 44 1290 0.068 0.1326 ns
+Tertile 2 T cell gamma delta Value 1 3 48 44 504 1.45e-05 5.85e-05 ****
+Tertile 2 T cell CD4+ Th1 Value 1 3 48 44 1345.5 0.0234 0.054756 ns
+Tertile 2 T cell CD4+ Th2 Value 1 3 48 44 842 0.0953 0.168940909090909 ns
+Tertile 2 T cell regulatory (Tregs) Value 1 3 48 44 1067 0.934 0.95024347826087 ns
+Tertile 2 immune score Value 1 3 48 44 398 7.53e-08 4.19528571428571e-07 ****
+Tertile 2 stroma score Value 1 3 48 44 1282 0.0779 0.1424109375 ns
+Tertile 2 microenvironment score Value 1 3 48 44 593 0.000233 0.000736783783783784 ***
+Tertile 3 Myeloid dendritic cell activated Value 1 3 49 50 144 3.97e-14 2.32245e-12 ****
+Tertile 3 B cell Value 1 3 49 50 699 0.00022 0.000715 ***
+Tertile 3 T cell CD4+ memory Value 1 3 49 50 798 0.00217 0.006045 **
+Tertile 3 T cell CD4+ naive Value 1 3 49 50 1157 0.614 0.711267326732673 ns
+Tertile 3 T cell CD4+ (non-regulatory) Value 1 3 49 50 1358.5 0.323 0.42461797752809 ns
+Tertile 3 T cell CD4+ central memory Value 1 3 49 50 1492 0.0595 0.123051724137931 ns
+Tertile 3 T cell CD4+ effector memory Value 1 3 49 50 532 1.19e-06 5.5692e-06 ****
+Tertile 3 T cell CD8+ naive Value 1 3 49 50 1064 0.26 0.366506024096386 ns
+Tertile 3 T cell CD8+ Value 1 3 49 50 700 0.000174 0.000581657142857143 ***
+Tertile 3 T cell CD8+ central memory Value 1 3 49 50 297 7.12e-11 9.256e-10 ****
+Tertile 3 T cell CD8+ effector memory Value 1 3 49 50 793.5 0.00111 0.00316756097560976 **
+Tertile 3 Class-switched memory B cell Value 1 3 49 50 936 0.0422 0.0914333333333333 ns
+Tertile 3 Common lymphoid progenitor Value 1 3 49 50 956 0.0602 0.123051724137931 ns
+Tertile 3 Common myeloid progenitor Value 1 3 49 50 1586 0.00504 0.013104 *
+Tertile 3 Myeloid dendritic cell Value 1 3 49 50 305 1.21e-10 1.287e-09 ****
+Tertile 3 Endothelial cell Value 1 3 49 50 1208 0.907 0.930868421052632 ns
+Tertile 3 Eosinophil Value 1 3 49 50 1310 0.52 0.620816326530612 ns
+Tertile 3 Cancer associated fibroblast Value 1 3 49 50 1356 0.361 0.459097826086957 ns
+Tertile 3 Granulocyte-monocyte progenitor Value 1 3 49 50 1464 0.0487 0.103598181818182 ns
+Tertile 3 Hematopoietic stem cell Value 1 3 49 50 1390 0.25 0.356707317073171 ns
+Tertile 3 Macrophage Value 1 3 49 50 263 1.7e-11 3.978e-10 ****
+Tertile 3 Macrophage M1 Value 1 3 49 50 298 8.92e-11 1.04364e-09 ****
+Tertile 3 Macrophage M2 Value 1 3 49 50 645.5 5.07e-05 0.000191351612903226 ***
+Tertile 3 Mast cell Value 1 3 49 50 1491 0.0632 0.125328813559322 ns
+Tertile 3 B cell memory Value 1 3 49 50 860 0.00776 0.0193174468085106 *
+Tertile 3 Monocyte Value 1 3 49 50 674.5 9.01e-05 0.000329428125 ***
+Tertile 3 B cell naive Value 1 3 49 50 1150 0.591 0.69147 ns
+Tertile 3 Neutrophil Value 1 3 49 50 1385.5 0.238 0.348075 ns
+Tertile 3 NK cell Value 1 3 49 50 909 0.0247 0.055575 ns
+Tertile 3 T cell NK Value 1 3 49 50 1125 0.486 0.5923125 ns
+Tertile 3 Plasmacytoid dendritic cell Value 1 3 49 50 126 1.21e-14 1.4157e-12 ****
+Tertile 3 B cell plasma Value 1 3 49 50 1172 0.713 0.81785294117647 ns
+Tertile 3 T cell gamma delta Value 1 3 49 50 671 0.000107 0.000379363636363636 ***
+Tertile 3 T cell CD4+ Th1 Value 1 3 49 50 1397.5 0.228 0.343594936708861 ns
+Tertile 3 T cell CD4+ Th2 Value 1 3 49 50 1067 0.27 0.3744 ns
+Tertile 3 T cell regulatory (Tregs) Value 1 3 49 50 1112.5 0.427 0.525884210526316 ns
+Tertile 3 immune score Value 1 3 49 50 425 2.2e-08 1.35473684210526e-07 ****
+Tertile 3 stroma score Value 1 3 49 50 1259 0.815 0.882916666666667 ns
+Tertile 3 microenvironment score Value 1 3 49 50 524 9.46e-07 4.61175e-06 ****

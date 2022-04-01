@@ -1,0 +1,163 @@
+Constru Pathway .y. group1 group2 n1 n2 statistic p p.adj p.adj.signif
+Tertile 1 [HM] Hypoxia Value 1 3 47 50 701 0.000631 0.00262107692307692 **
+Tertile 1 [HM] Mitotic spindle Value 1 3 47 50 1531 0.0103 0.0256707692307692 *
+Tertile 1 [HM] Wnt beta catenin signaling Value 1 3 47 50 1730 6.26e-05 0.000362185714285714 ***
+Tertile 1 [HM] TGF beta signaling Value 1 3 47 50 1049 0.365 0.465590551181102 ns
+Tertile 1 [HM] DNA repair Value 1 3 47 50 1572 0.00421 0.0119652631578947 *
+Tertile 1 [HM] G2M checkpoint Value 1 3 47 50 1628 0.00109 0.003924 **
+Tertile 1 [HM] Apoptosis Value 1 3 47 50 303 3.16e-10 1.2798e-08 ****
+Tertile 1 [HM] Notch signaling Value 1 3 47 50 1548 0.00717 0.0190416393442623 *
+Tertile 1 [HM] Hedgehog signaling Value 1 3 47 50 1475 0.0306 0.0656526315789474 ns
+Tertile 1 [HM] PI3K Akt mTOR signaling Value 1 3 47 50 611 4.75e-05 0.000295961538461539 ***
+Tertile 1 [HM] mTORC1 signaling Value 1 3 47 50 1091 0.547 0.632957142857143 ns
+Tertile 1 [HM] E2F targets Value 1 3 47 50 1636 0.000887 0.00342128571428571 **
+Tertile 1 [HM] Epithelial mesenchymal transition Value 1 3 47 50 642 0.000121 0.000576529411764706 ***
+Tertile 1 [HM] Oxidative phosphorylation Value 1 3 47 50 1125 0.721 0.783906040268456 ns
+Tertile 1 [HM] Glycolysis Value 1 3 47 50 965 0.13 0.204466019417476 ns
+Tertile 1 [HM] Reactive oxigen species pathway Value 1 3 47 50 550 6.55e-06 5.895e-05 ****
+Tertile 1 [HM] p53 pathway Value 1 3 47 50 482 5.77e-07 6.69985714285714e-06 ****
+Tertile 1 [HM] UV response up Value 1 3 47 50 695 0.000538 0.00235556756756757 **
+Tertile 1 [HM] UV response down Value 1 3 47 50 1063 0.421 0.521590909090909 ns
+Tertile 1 [HM] Angiogenesis Value 1 3 47 50 774 0.00384 0.0113105454545455 *
+Tertile 1 [HM] KRAS signaling up Value 1 3 47 50 242 1.68e-11 9.072e-10 ****
+Tertile 1 [HM] KRAS signaling down Value 1 3 47 50 1177 0.991 0.991 ns
+Tertile 1 [HM] Myc targets Value 1 3 47 50 1669 0.000368 0.001656 **
+Tertile 1 [HM] Estrogen response Value 1 3 47 50 884 0.036 0.0757402597402597 ns
+Tertile 1 [IPA] ERK MAPK Signaling Value 1 3 47 50 617 5.71e-05 0.0003426 ***
+Tertile 1 [IPA] HMGB1 Signaling Value 1 3 47 50 596 2.97e-05 0.000200475 ***
+Tertile 1 [IPA] ErbB Signaling Value 1 3 47 50 735 0.00151 0.00531782608695652 **
+Tertile 1 [IPA] PTEN Signaling Value 1 3 47 50 922 0.0684 0.127022727272727 ns
+Tertile 1 [IPA] PI3K AKT Signaling Value 1 3 47 50 741 0.00175 0.00603191489361702 **
+Tertile 1 [IPA] HER 2 Signaling in Breast Cancer Value 1 3 47 50 637 0.000104 0.000510545454545454 ***
+Tertile 1 [IPA] mTOR Signaling Value 1 3 47 50 902 0.0492 0.0972 ns
+Tertile 1 [IPA] AMPK Signaling Value 1 3 47 50 1245 0.616 0.702760563380282 ns
+Tertile 1 [IPA] p38 MAPK Signaling Value 1 3 47 50 222 6.17e-12 5.5323e-10 ****
+Tertile 1 [IPA] Myc Mediated Apoptosis Signaling Value 1 3 47 50 887 0.038 0.0789230769230769 ns
+Tertile 1 [IPA] EGF Signaling Value 1 3 47 50 1115 0.668 0.740571428571429 ns
+Tertile 1 [IPA] VEGF Signaling Value 1 3 47 50 927 0.074 0.131736263736264 ns
+Tertile 1 [IPA] Estrogen Dependent Breast Cancer Signaling Value 1 3 47 50 1139 0.798 0.839454545454546 ns
+Tertile 1 [IPA] TNFR1 Signaling Value 1 3 47 50 627 7.75e-05 0.000405 ***
+Tertile 1 [IPA] ErbB2 ErbB3 Signaling Value 1 3 47 50 857 0.0219 0.049275 *
+Tertile 1 [IPA] UVC Induced MAPK Signaling Value 1 3 47 50 850 0.0192 0.0450782608695652 *
+Tertile 1 [IPA] UVA Induced MAPK Signaling Value 1 3 47 50 971 0.142 0.219085714285714 ns
+Tertile 1 [IPA] UVB Induced MAPK Signaling Value 1 3 47 50 800 0.00687 0.0188633898305085 *
+Tertile 1 [IPA] ERK5 Signaling Value 1 3 47 50 982 0.165 0.243 ns
+Tertile 1 [IPA] Mismatch Repair in Eukaryotes Value 1 3 47 50 1767 1.96e-05 0.0001512 ***
+Tertile 1 [IPA] Telomere Extension by Telomerase Value 1 3 47 50 1638 0.000842 0.00332692682926829 **
+Tertile 1 [TBI] Barrier genes Value 1 3 47 50 983 0.167 0.24372972972973 ns
+Tertile 1 [TBI] MAPK up genes Value 1 3 47 50 1193 0.899 0.915962264150943 ns
+Tertile 1 [TBI] Phopholipase Value 1 3 47 50 1318 0.304 0.4104 ns
+Tertile 1 [LM] Proliferation Value 1 3 47 50 1479 0.0285 0.0623918918918919 ns
+Tertile 1 [TPW] PI3Kgamma Signature Value 1 3 47 50 541 4.81e-06 4.58364705882353e-05 ****
+Tertile 1 [TPW] NOS1 Signature Value 1 3 47 50 1337 0.244 0.332168067226891 ns
+Tertile 1 [TPW] SHC1/pSTAT3 Signature Value 1 3 47 50 528 3.06e-06 3.09825e-05 ****
+Tertile 1 [TPW] Hypoxia/Adenosine Immune Cell Suppression Value 1 3 47 50 331 1.14e-09 3.65657142857143e-08 ****
+Tertile 1 [TPW] Immunogenic Cell Death (ICD) Value 1 3 47 50 224 6.83e-12 5.5323e-10 ****
+Tertile 2 [HM] Hypoxia Value 1 3 48 44 834 0.0834 0.145277419354839 ns
+Tertile 2 [HM] Mitotic spindle Value 1 3 48 44 1035 0.873 0.912425806451613 ns
+Tertile 2 [HM] Wnt beta catenin signaling Value 1 3 48 44 1543 0.000104 0.000510545454545454 ***
+Tertile 2 [HM] TGF beta signaling Value 1 3 48 44 1115 0.649 0.725089655172414 ns
+Tertile 2 [HM] DNA repair Value 1 3 48 44 1166 0.394 0.49865625 ns
+Tertile 2 [HM] G2M checkpoint Value 1 3 48 44 994 0.632 0.715972027972028 ns
+Tertile 2 [HM] Apoptosis Value 1 3 48 44 417 1.94e-07 2.85709090909091e-06 ****
+Tertile 2 [HM] Notch signaling Value 1 3 48 44 1347 0.0227 0.0503753424657534 ns
+Tertile 2 [HM] Hedgehog signaling Value 1 3 48 44 1361 0.0168 0.0400235294117647 *
+Tertile 2 [HM] PI3K Akt mTOR signaling Value 1 3 48 44 525 2.09e-05 0.0001539 ***
+Tertile 2 [HM] mTORC1 signaling Value 1 3 48 44 673 0.00252 0.0081648 **
+Tertile 2 [HM] E2F targets Value 1 3 48 44 936 0.352 0.456192 ns
+Tertile 2 [HM] Epithelial mesenchymal transition Value 1 3 48 44 822 0.0678 0.127022727272727 ns
+Tertile 2 [HM] Oxidative phosphorylation Value 1 3 48 44 966 0.486 0.58755223880597 ns
+Tertile 2 [HM] Glycolysis Value 1 3 48 44 1038 0.892 0.915962264150943 ns
+Tertile 2 [HM] Reactive oxigen species pathway Value 1 3 48 44 664 0.00197 0.00664875 **
+Tertile 2 [HM] p53 pathway Value 1 3 48 44 720 0.0083 0.0216870967741935 *
+Tertile 2 [HM] UV response up Value 1 3 48 44 737 0.0123 0.0301909090909091 *
+Tertile 2 [HM] UV response down Value 1 3 48 44 1223 0.194 0.270931034482759 ns
+Tertile 2 [HM] Angiogenesis Value 1 3 48 44 888 0.191 0.269060869565217 ns
+Tertile 2 [HM] KRAS signaling up Value 1 3 48 44 409 1.31e-07 2.1222e-06 ****
+Tertile 2 [HM] KRAS signaling down Value 1 3 48 44 1315 0.0429 0.0868725 ns
+Tertile 2 [HM] Myc targets Value 1 3 48 44 1253 0.125 0.20370297029703 ns
+Tertile 2 [HM] Estrogen response Value 1 3 48 44 867 0.141 0.219085714285714 ns
+Tertile 2 [IPA] ERK MAPK Signaling Value 1 3 48 44 761 0.0208 0.0481371428571429 *
+Tertile 2 [IPA] HMGB1 Signaling Value 1 3 48 44 537 3.29e-05 0.000213192 ***
+Tertile 2 [IPA] ErbB Signaling Value 1 3 48 44 869 0.145 0.221603773584906 ns
+Tertile 2 [IPA] PTEN Signaling Value 1 3 48 44 763 0.0217 0.049275 *
+Tertile 2 [IPA] PI3K AKT Signaling Value 1 3 48 44 678 0.00288 0.00914823529411765 **
+Tertile 2 [IPA] HER 2 Signaling in Breast Cancer Value 1 3 48 44 688 0.00375 0.01125 *
+Tertile 2 [IPA] mTOR Signaling Value 1 3 48 44 1288 0.0702 0.127779775280899 ns
+Tertile 2 [IPA] AMPK Signaling Value 1 3 48 44 1173 0.364 0.465590551181102 ns
+Tertile 2 [IPA] p38 MAPK Signaling Value 1 3 48 44 388 4.5e-08 8.1e-07 ****
+Tertile 2 [IPA] Myc Mediated Apoptosis Signaling Value 1 3 48 44 817 0.0621 0.120451764705882 ns
+Tertile 2 [IPA] EGF Signaling Value 1 3 48 44 953 0.425 0.521590909090909 ns
+Tertile 2 [IPA] VEGF Signaling Value 1 3 48 44 851 0.11 0.183711340206186 ns
+Tertile 2 [IPA] Estrogen Dependent Breast Cancer Signaling Value 1 3 48 44 860 0.127 0.20370297029703 ns
+Tertile 2 [IPA] TNFR1 Signaling Value 1 3 48 44 520 1.72e-05 0.00013932 ***
+Tertile 2 [IPA] ErbB2 ErbB3 Signaling Value 1 3 48 44 722 0.0087 0.0223714285714286 *
+Tertile 2 [IPA] UVC Induced MAPK Signaling Value 1 3 48 44 880 0.171 0.245150442477876 ns
+Tertile 2 [IPA] UVA Induced MAPK Signaling Value 1 3 48 44 848 0.105 0.1771875 ns
+Tertile 2 [IPA] UVB Induced MAPK Signaling Value 1 3 48 44 932 0.336 0.442536585365854 ns
+Tertile 2 [IPA] ERK5 Signaling Value 1 3 48 44 745 0.0147 0.0355432835820896 *
+Tertile 2 [IPA] Mismatch Repair in Eukaryotes Value 1 3 48 44 1259 0.114 0.188448979591837 ns
+Tertile 2 [IPA] Telomere Extension by Telomerase Value 1 3 48 44 1289 0.069 0.127022727272727 ns
+Tertile 2 [TBI] Barrier genes Value 1 3 48 44 975 0.531 0.623347826086957 ns
+Tertile 2 [TBI] MAPK up genes Value 1 3 48 44 953 0.425 0.521590909090909 ns
+Tertile 2 [TBI] Phopholipase Value 1 3 48 44 1176 0.352 0.456192 ns
+Tertile 2 [LM] Proliferation Value 1 3 48 44 835 0.0848 0.146144680851064 ns
+Tertile 2 [TPW] PI3Kgamma Signature Value 1 3 48 44 607 0.000366 0.001656 **
+Tertile 2 [TPW] NOS1 Signature Value 1 3 48 44 1294 0.0632 0.120451764705882 ns
+Tertile 2 [TPW] SHC1/pSTAT3 Signature Value 1 3 48 44 558 7.06e-05 0.000394386206896552 ***
+Tertile 2 [TPW] Hypoxia/Adenosine Immune Cell Suppression Value 1 3 48 44 440 5.79e-07 6.69985714285714e-06 ****
+Tertile 2 [TPW] Immunogenic Cell Death (ICD) Value 1 3 48 44 431 3.8e-07 5.13e-06 ****
+Tertile 3 [HM] Hypoxia Value 1 3 49 50 840 0.00713 0.0190416393442623 *
+Tertile 3 [HM] Mitotic spindle Value 1 3 49 50 1534 0.0308 0.0656526315789474 ns
+Tertile 3 [HM] Wnt beta catenin signaling Value 1 3 49 50 1714 0.000629 0.00262107692307692 **
+Tertile 3 [HM] TGF beta signaling Value 1 3 49 50 1244 0.897 0.915962264150943 ns
+Tertile 3 [HM] DNA repair Value 1 3 49 50 1008 0.13 0.204466019417476 ns
+Tertile 3 [HM] G2M checkpoint Value 1 3 49 50 1369 0.315 0.421735537190083 ns
+Tertile 3 [HM] Apoptosis Value 1 3 49 50 556 2.89e-06 3.09825e-05 ****
+Tertile 3 [HM] Notch signaling Value 1 3 49 50 1599 0.00895 0.0226546875 *
+Tertile 3 [HM] Hedgehog signaling Value 1 3 49 50 1513 0.0442 0.0884 ns
+Tertile 3 [HM] PI3K Akt mTOR signaling Value 1 3 49 50 1018 0.148 0.22407476635514 ns
+Tertile 3 [HM] mTORC1 signaling Value 1 3 49 50 1032 0.178 0.252947368421053 ns
+Tertile 3 [HM] E2F targets Value 1 3 49 50 1221 0.98 0.986086956521739 ns
+Tertile 3 [HM] Epithelial mesenchymal transition Value 1 3 49 50 784 0.00205 0.00677755102040816 **
+Tertile 3 [HM] Oxidative phosphorylation Value 1 3 49 50 1313 0.54 0.629352517985612 ns
+Tertile 3 [HM] Glycolysis Value 1 3 49 50 1266 0.777 0.822705882352941 ns
+Tertile 3 [HM] Reactive oxigen species pathway Value 1 3 49 50 804 0.00325 0.010125 *
+Tertile 3 [HM] p53 pathway Value 1 3 49 50 756 0.00104 0.00382909090909091 **
+Tertile 3 [HM] UV response up Value 1 3 49 50 959 0.0632 0.120451764705882 ns
+Tertile 3 [HM] UV response down Value 1 3 49 50 1444 0.126 0.20370297029703 ns
+Tertile 3 [HM] Angiogenesis Value 1 3 49 50 815 0.00416 0.0119652631578947 *
+Tertile 3 [HM] KRAS signaling up Value 1 3 49 50 362 1.58e-09 3.65657142857143e-08 ****
+Tertile 3 [HM] KRAS signaling down Value 1 3 49 50 1266 0.777 0.822705882352941 ns
+Tertile 3 [HM] Myc targets Value 1 3 49 50 1470 0.0871 0.148528421052632 ns
+Tertile 3 [HM] Estrogen response Value 1 3 49 50 1268 0.766 0.821801324503311 ns
+Tertile 3 [IPA] ERK MAPK Signaling Value 1 3 49 50 975 0.0808 0.142278260869565 ns
+Tertile 3 [IPA] HMGB1 Signaling Value 1 3 49 50 739 0.000679 0.00274995 **
+Tertile 3 [IPA] ErbB Signaling Value 1 3 49 50 1286 0.672 0.740571428571429 ns
+Tertile 3 [IPA] PTEN Signaling Value 1 3 49 50 1116 0.448 0.545684210526316 ns
+Tertile 3 [IPA] PI3K AKT Signaling Value 1 3 49 50 1132 0.517 0.615838235294118 ns
+Tertile 3 [IPA] HER 2 Signaling in Breast Cancer Value 1 3 49 50 1133 0.522 0.617255474452555 ns
+Tertile 3 [IPA] mTOR Signaling Value 1 3 49 50 1397 0.23 0.315762711864407 ns
+Tertile 3 [IPA] AMPK Signaling Value 1 3 49 50 1642 0.00356 0.0108815094339623 *
+Tertile 3 [IPA] p38 MAPK Signaling Value 1 3 49 50 658 7.35e-05 0.0003969 ***
+Tertile 3 [IPA] Myc Mediated Apoptosis Signaling Value 1 3 49 50 1053 0.23 0.315762711864407 ns
+Tertile 3 [IPA] EGF Signaling Value 1 3 49 50 1321 0.504 0.6048 ns
+Tertile 3 [IPA] VEGF Signaling Value 1 3 49 50 1087 0.336 0.442536585365854 ns
+Tertile 3 [IPA] Estrogen Dependent Breast Cancer Signaling Value 1 3 49 50 1169 0.698 0.764027027027027 ns
+Tertile 3 [IPA] TNFR1 Signaling Value 1 3 49 50 968 0.0726 0.13068 ns
+Tertile 3 [IPA] ErbB2 ErbB3 Signaling Value 1 3 49 50 1217 0.958 0.969975 ns
+Tertile 3 [IPA] UVC Induced MAPK Signaling Value 1 3 49 50 1157 0.637 0.716625 ns
+Tertile 3 [IPA] UVA Induced MAPK Signaling Value 1 3 49 50 1426 0.161 0.239284403669725 ns
+Tertile 3 [IPA] UVB Induced MAPK Signaling Value 1 3 49 50 1107 0.411 0.516139534883721 ns
+Tertile 3 [IPA] ERK5 Signaling Value 1 3 49 50 1268 0.766 0.821801324503311 ns
+Tertile 3 [IPA] Mismatch Repair in Eukaryotes Value 1 3 49 50 1422 0.169 0.244446428571429 ns
+Tertile 3 [IPA] Telomere Extension by Telomerase Value 1 3 49 50 1632 0.00444 0.0124013793103448 *
+Tertile 3 [TBI] Barrier genes Value 1 3 49 50 1149 0.597 0.685914893617021 ns
+Tertile 3 [TBI] MAPK up genes Value 1 3 49 50 1430 0.152 0.228 ns
+Tertile 3 [TBI] Phopholipase Value 1 3 49 50 1696 0.000992 0.0037373023255814 **
+Tertile 3 [LM] Proliferation Value 1 3 49 50 1206 0.897 0.915962264150943 ns
+Tertile 3 [TPW] PI3Kgamma Signature Value 1 3 49 50 627 2.89e-05 0.000200475 ***
+Tertile 3 [TPW] NOS1 Signature Value 1 3 49 50 1519 0.04 0.0820253164556962 ns
+Tertile 3 [TPW] SHC1/pSTAT3 Signature Value 1 3 49 50 602 1.32e-05 0.000112547368421053 ***
+Tertile 3 [TPW] Hypoxia/Adenosine Immune Cell Suppression Value 1 3 49 50 415 1.47e-08 2.97675e-07 ****
+Tertile 3 [TPW] Immunogenic Cell Death (ICD) Value 1 3 49 50 362 1.58e-09 3.65657142857143e-08 ****
