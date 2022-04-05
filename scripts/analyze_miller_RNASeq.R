@@ -17,7 +17,7 @@ library(extrafont)
 loadfonts()
 registerDoMC(cores=20)
 
-setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
+setwd("~/QCRI_PostDoc/Raghav_Related/Lance_Miller_Related/CONSTRU/")
 source("scripts/all_functions.R")
 
 get_all_df_info <- function(df)
@@ -57,23 +57,33 @@ get_all_df_info <- function(df)
     gene_expr_df[,i] <- as.numeric(as.vector(gene_expr_df[,i]))
   }
   colnames(gene_expr_df) <- as.character(as.vector(metadata_info[c(6:length(metadata_info))]))
-  all_gene_names <- as.character(as.vector(df[13:nrow(df),2]))
-  all_gene_names <- unlist(lapply(strsplit(all_gene_names,split=" ///"),`[[`,1))
   
-  unique_genes <- unique(all_gene_names[!is.na(all_gene_names)])
+  #Get rid of genes with NA
+  all_gene_names <- as.character(as.vector(df[13:nrow(df),2]))
+  na_ids <- which(is.na(rowSums(gene_expr_df)))
+  rev_gene_expr_df <- gene_expr_df[-na_ids,]
+  rev_all_gene_names <- all_gene_names[-na_ids]
+  #all_gene_names <- unlist(lapply(strsplit(all_gene_names,split=" ///"),`[[`,1))
+  
+  #Get rid of all genes with 0 or empty gene names
+  other_ids <- which(rev_all_gene_names=="" | rev_all_gene_names=="0")
+  revised_gene_names <- rev_all_gene_names[-other_ids]
+  rev_gene_expr_df <- rev_gene_expr_df[-other_ids,]
+  
+  unique_genes <- unique(revised_gene_names)
   final_expr_df <- NULL
   for (i in 1:length(unique_genes))
   {
     gene_name <- unique_genes[i]
-    ids <- which(all_gene_names==gene_name)
+    ids <- which(revised_gene_names==gene_name)
     if (length(ids)>1)
     {
-      index <- which.max(rowSums(gene_expr_df[ids,]))
-      temp <- gene_expr_df[ids[index],]
+      index <- as.numeric(which.max(rowSums(rev_gene_expr_df[ids,])))
+      temp <- rev_gene_expr_df[ids[index],]
     }else{
-      temp <- gene_expr_df[ids,]
+      temp <- rev_gene_expr_df[ids,]
     }
-    final_expr_df <- rbind(final_expr_df,temp)
+    final_expr_df <- rbind(final_expr_df, temp)
   }
   final_expr_df <- as.data.frame(final_expr_df)
   rownames(final_expr_df) <- unique_genes
@@ -84,9 +94,9 @@ get_all_df_info <- function(df)
 }
 
 #Get the RNASeq data
-gse82191_df <- fread("Data/GSE82191_OV431_22277_for Raghvendra_03-15-22.txt",header=F,sep="\t")
-gse9891_df <- fread("Data/GSE9891_Tothill_OV227_for Raghvendra_03-30-22.txt",header=F,sep="\t")
-gseov3_df <- fread("Data/OV3_221_22277_for Raghvendra_03-31-22.txt",header=F,sep="\t")
+gse82191_df <- fread("Data/GSE140082_221_29377_for Raghvendra_03-31-22.txt",header=F,sep="\t")
+gse9891_df <- fread("Data/GSE32062_260_41000_for Raghvendra_03-31-22.txt",header=F,sep="\t")
+gseov3_df <- fread("Data/GSE53963_174_41000_for Raghvendra_03-31-22.txt",header=F,sep="\t")
 gse82191_df <- as.data.frame(gse82191_df)
 gse9891_df <- as.data.frame(gse9891_df)
 gseov3_df <- as.data.frame(gseov3_df)
