@@ -14,13 +14,16 @@ library(ggpubr)
 library(rstatix)
 library(extrafontdb)
 library(extrafont)
+library(preprocessCore)
+library(sva)
 loadfonts()
 registerDoMC(cores=20)
 
-setwd("~/QCRI_PostDoc/Raghav_Related/Lance_Miller_Related/CONSTRU/")
+setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
+
 source("scripts/all_functions.R")
 
-get_all_df_info <- function(df)
+get_all_df_info <- function(df, mode)
 {
   #Get sample names
   sample_ids <- as.character(as.vector(df[1,c(6:ncol(df))]))
@@ -60,15 +63,30 @@ get_all_df_info <- function(df)
   
   #Get rid of genes with NA
   all_gene_names <- as.character(as.vector(df[13:nrow(df),2]))
+  if (mode=="train")
+  {
+    all_gene_names <- unlist(lapply(strsplit(all_gene_names,split=" ///"),`[[`,1))
+  }
   na_ids <- which(is.na(rowSums(gene_expr_df)))
-  rev_gene_expr_df <- gene_expr_df[-na_ids,]
-  rev_all_gene_names <- all_gene_names[-na_ids]
-  #all_gene_names <- unlist(lapply(strsplit(all_gene_names,split=" ///"),`[[`,1))
+  if (length(na_ids)>0)
+  {
+    rev_gene_expr_df <- gene_expr_df[-na_ids,]
+    rev_all_gene_names <- all_gene_names[-na_ids]
+  }else{
+    rev_gene_expr_df <- gene_expr_df
+    rev_all_gene_names <- all_gene_names
+  }
   
   #Get rid of all genes with 0 or empty gene names
   other_ids <- which(rev_all_gene_names=="" | rev_all_gene_names=="0")
-  revised_gene_names <- rev_all_gene_names[-other_ids]
-  rev_gene_expr_df <- rev_gene_expr_df[-other_ids,]
+  if (length(other_ids)>0)
+  {
+    revised_gene_names <- rev_all_gene_names[-other_ids]
+    rev_gene_expr_df <- rev_gene_expr_df[-other_ids,]
+  }else{
+    revised_gene_names <- rev_all_gene_names
+    rev_gene_expr_df <- rev_gene_expr_df
+  }
   
   unique_genes <- unique(revised_gene_names)
   final_expr_df <- NULL
@@ -94,16 +112,16 @@ get_all_df_info <- function(df)
 }
 
 #Get the RNASeq data
-gse82191_df <- fread("Data/GSE140082_221_29377_for Raghvendra_03-31-22.txt",header=F,sep="\t")
-gse9891_df <- fread("Data/GSE32062_260_41000_for Raghvendra_03-31-22.txt",header=F,sep="\t")
-gseov3_df <- fread("Data/GSE53963_174_41000_for Raghvendra_03-31-22.txt",header=F,sep="\t")
+gse82191_df <- fread("Data/GSE82191_OV431_22277_for Raghvendra_03-15-22.txt",header=F,sep="\t")
+gse9891_df <- fread("Data/GSE9891_Tothill_OV227_for Raghvendra_03-30-22.txt",header=F,sep="\t")
+gseov3_df <- fread("Data/GSE82191_OV431_22277_for Raghvendra_03-15-22.txt",header=F,sep="\t")
 gse82191_df <- as.data.frame(gse82191_df)
 gse9891_df <- as.data.frame(gse9891_df)
 gseov3_df <- as.data.frame(gseov3_df)
 
-gse82191_out <- get_all_df_info(gse82191_df)
-gse9891_out <- get_all_df_info(gse9891_df)
-gseov3_out <- get_all_df_info(gseov3_df)
+gse82191_out <- get_all_df_info(gse82191_df, mode="train")
+gse9891_out <- get_all_df_info(gse9891_df, mode="train")
+gseov3_out <- get_all_df_info(gseov3_df, mode="train")
 
 save(gse82191_out, file="Data/GSE82191_all_info.Rdata")
 save(gse9891_out, file="Data/GSE9891_all_info.Rdata")
@@ -114,7 +132,10 @@ final_gse82191_expr_df <- gse82191_out[[13]]
 final_gse9891_expr_df <- gse9891_out[[13]]
 final_gseov3_expr_df <- gseov3_out[[13]]
 common_genes <- intersect(intersect(rownames(final_gse82191_expr_df),rownames(final_gseov3_expr_df)),rownames(final_gse9891_expr_df))
-final_all_expr_df <- as.data.frame(cbind(final_gse82191_expr_df[common_genes,], final_gse9891_expr_df[common_genes,], final_gseov3_expr_df[common_genes,]))
+all_expr_df <- as.data.frame(cbind(final_gse82191_expr_df[common_genes,], final_gse9891_expr_df[common_genes,], final_gseov3_expr_df[common_genes,]))
+#Need to use combat in Training phase as expression distributions are very different
+final_all_expr_df = ComBat(dat=all_expr_df, batch=c(rep("A",ncol(final_gse82191_expr_df)),rep("B",ncol(final_gse9891_expr_df)),rep("C",ncol(final_gseov3_expr_df))), 
+                       mod=NULL, par.prior=TRUE, prior.plots=FALSE)
 
 #Load the frequently dysregulated pathways in cancer
 load("Data/Selected.pathways.3.4.RData")
@@ -129,11 +150,11 @@ immune_cell_type_conc <- immunedeconv::deconvolute(final_all_expr_df, 'xcell')
 immune_cell_types <- immune_cell_type_conc$cell_type
 immune_cell_type_concentrations <- as.data.frame(immune_cell_type_conc[,c(2:ncol(immune_cell_type_conc))])
 rownames(immune_cell_type_concentrations) <- immune_cell_types
-conc_values <- as.numeric(as.vector(colSums(immune_cell_type_concentrations)))
-#for (i in 1:length(conc_values))
-#{
-#  immune_cell_type_concentrations[,i] <- immune_cell_type_concentrations[,i]/conc_values[i]
-#}
+# conc_values <- as.numeric(as.vector(colSums(immune_cell_type_concentrations)))
+# for (i in 1:length(conc_values))
+# {
+#   immune_cell_type_concentrations[,i] <- immune_cell_type_concentrations[,i]/conc_values[i]
+# }
 
 #Build the complexheatmaps for the pathway activites, immune activities and immune deconvolutions
 ###############################################################################
@@ -185,7 +206,7 @@ ht_pathway = Heatmap(matrix=rev_pathway_activities, col_fun1,
                   row_labels = rownames(rev_pathway_activities),
                   row_names_max_width = max_text_width(rownames(rev_pathway_activities)),
                   column_split = column_split_values,
-                  cluster_column_slices=T,
+                  cluster_column_slices=F,
                   show_column_names = F,
                   raster_quality = 2,
                   top_annotation = ha,
@@ -223,7 +244,7 @@ group_block_anno(7:9, "empty", gp = gpar(fill = "#FEDD00"), label = "Con high")
 dev.off()
 
 ##Immune Concentrations
-col_fun2 = colorRamp2(c(0,1),c("white","red"))
+col_fun2 = colorRamp2(c(0,0.5),c("white","red"))
 ht_immune_conc = Heatmap(matrix=as.matrix(rev_immune_cell_type_concentrations), col_fun2, 
                              name = "Immune Cell Fractions", column_title = qq("Immune Cell Fractions across Constru Groups"),
                              width = unit(15, "cm"),
@@ -235,6 +256,7 @@ ht_immune_conc = Heatmap(matrix=as.matrix(rev_immune_cell_type_concentrations), 
                              row_labels = rownames(rev_immune_cell_type_concentrations),
                              row_names_max_width = max_text_width(rownames(rev_immune_cell_type_concentrations)),
                              column_split = column_split_values,
+                             cluster_column_slices = T,
                              show_column_names = F,
                              raster_quality = 2,
                              top_annotation = ha,
@@ -272,8 +294,8 @@ dev.off()
 
 #Perform additional analysis on pathways
 ################################################################################
-#Melt the dataset to perform wilcox test between the tertiles: Cyt 1 vs Cyt 3 for Constru tertiles 1,2,3
-constru_tertiles_labels <- c(rep("Tertile 1",294),rep("Tertile 2",291),rep("Tertile 3",294))
+#Melt the dataset to perform wilcox Training between the tertiles: Cyt 1 vs Cyt 3 for Constru tertiles 1,2,3
+constru_tertiles_labels <- c(rep("Tertile 1",364),rep("Tertile 2",361),rep("Tertile 3",364))
 mod_rev_pathway_activities <- as.data.frame(t(rbind(rbind(rev_pathway_activities,constru_tertiles_labels),rev_cyt_tertiles)))
 mod_rev_pathway_activities_df <- reshape2::melt(mod_rev_pathway_activities,id.vars=c("constru_tertiles_labels","rev_cyt_tertiles"))
 colnames(mod_rev_pathway_activities_df) <- c("Constru","Cyt","Pathway","Value")
@@ -452,17 +474,17 @@ pdf(file="results/Training_Pathway_Activities_Combined.pdf", height = 10, width 
 dev.off()
 
 ##Get the mean and se information for pathway activites
-#out_pathways <- perform_stat_test(input_df = rev_pathway_activities_df)
-#stat.test.pathways <- out_pathways[[1]]
+#out_pathways <- perform_stat_Training(input_df = rev_pathway_activities_df)
+#stat.Training.pathways <- out_pathways[[1]]
 #stat_table.pathways <- out_pathways[[2]]
-#g_pathways <- make_mean_se_stat_plot(rev_pathway_activities_df, stat.test.pathways, plot_title = "Pathway Activity for Constru Tertiles", xlab_label = "Pathways", ylab_label = "Mean Activity")
+#g_pathways <- make_mean_se_stat_plot(rev_pathway_activities_df, stat.Training.pathways, plot_title = "Pathway Activity for Constru Tertiles", xlab_label = "Pathways", ylab_label = "Mean Activity")
 #ggsave(filename="results/Pathway_Activities_Mean_Constru_Cyt.pdf",plot = g_pathways, device = pdf(), height = 10, width=10, units="in", dpi=300)
 #dev.off()
-#write.table(stat.test.pathways, file="results/Pathway_Activities_Stats.csv",row.names=F, col.names=T, quote=F)
+#write.table(stat.Training.pathways, file="results/Pathway_Activities_Stats.csv",row.names=F, col.names=T, quote=F)
 
 #Perform additional analysis on immune cell type concentrations
 ################################################################################
-#Melt the dataset to perform wilcox test between the tertiles: Cyt 1 vs Cyt 3 for Constru tertiles 1,2,3
+#Melt the dataset to perform wilcox Training between the tertiles: Cyt 1 vs Cyt 3 for Constru tertiles 1,2,3
 mod_rev_immune_conc <- as.data.frame(t(rbind(rbind(rev_immune_cell_type_concentrations,constru_tertiles_labels),rev_cyt_tertiles)))
 colnames(mod_rev_immune_conc)[c(40:41)] <- c("constru_tertiles_labels","cyt_tertiles")
 mod_rev_immune_conc_df <- reshape2::melt(mod_rev_immune_conc,id.vars=c("constru_tertiles_labels","cyt_tertiles"))
@@ -649,11 +671,11 @@ dev.off()
 
 
 ##Get the mean and se information for pathway activites
-#out_immune_conc <- perform_stat_test(input_df = rev_immune_conc_df)
-#stat.test.immune_conc <- out_immune_conc[[1]]
-#g_immune_conc <- make_mean_se_stat_plot(rev_immune_conc_df, stat.test.immune_conc, plot_title = "Immune Fractions for Constru Tertiles", xlab_label = "Immune Celltypes", ylab_label = "Mean Fractions")
+#out_immune_conc <- perform_stat_Training(input_df = rev_immune_conc_df)
+#stat.Training.immune_conc <- out_immune_conc[[1]]
+#g_immune_conc <- make_mean_se_stat_plot(rev_immune_conc_df, stat.Training.immune_conc, plot_title = "Immune Fractions for Constru Tertiles", xlab_label = "Immune Celltypes", ylab_label = "Mean Fractions")
 #ggsave(filename="results/Immune_Conc_Mean_Constru_Cyt.pdf",plot = g_immune_conc, device = pdf(), height = 10, width=10, units="in", dpi=300)
 #dev.off()
-#write.table(stat.test.immune_conc, file="results/Immune_Conc_Stats.csv",row.names=F, col.names=T, quote=F)
+#write.table(stat.Training.immune_conc, file="results/Immune_Conc_Stats.csv",row.names=F, col.names=T, quote=F)
 
 
