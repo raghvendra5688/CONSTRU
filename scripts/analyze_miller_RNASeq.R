@@ -114,7 +114,7 @@ get_all_df_info <- function(df, mode)
 #Get the RNASeq data
 gse82191_df <- fread("Data/GSE82191_OV431_22277_for Raghvendra_03-15-22.txt",header=F,sep="\t")
 gse9891_df <- fread("Data/GSE9891_Tothill_OV227_for Raghvendra_03-30-22.txt",header=F,sep="\t")
-gseov3_df <- fread("Data/GSE82191_OV431_22277_for Raghvendra_03-15-22.txt",header=F,sep="\t")
+gseov3_df <- fread("Data/OV3_221_22277_for Raghvendra_03-31-22.txt",header=F,sep="\t")
 gse82191_df <- as.data.frame(gse82191_df)
 gse9891_df <- as.data.frame(gse9891_df)
 gseov3_df <- as.data.frame(gseov3_df)
@@ -136,6 +136,7 @@ all_expr_df <- as.data.frame(cbind(final_gse82191_expr_df[common_genes,], final_
 #Need to use combat in Training phase as expression distributions are very different
 final_all_expr_df = ComBat(dat=all_expr_df, batch=c(rep("A",ncol(final_gse82191_expr_df)),rep("B",ncol(final_gse9891_expr_df)),rep("C",ncol(final_gseov3_expr_df))), 
                        mod=NULL, par.prior=TRUE, prior.plots=FALSE)
+save(final_all_expr_df,file="Data/Training_Combined.Rdata")
 
 #Load the frequently dysregulated pathways in cancer
 load("Data/Selected.pathways.3.4.RData")
@@ -295,7 +296,7 @@ dev.off()
 #Perform additional analysis on pathways
 ################################################################################
 #Melt the dataset to perform wilcox Training between the tertiles: Cyt 1 vs Cyt 3 for Constru tertiles 1,2,3
-constru_tertiles_labels <- c(rep("Tertile 1",364),rep("Tertile 2",361),rep("Tertile 3",364))
+constru_tertiles_labels <- c(rep("Tertile 1",294),rep("Tertile 2",291),rep("Tertile 3",294))
 mod_rev_pathway_activities <- as.data.frame(t(rbind(rbind(rev_pathway_activities,constru_tertiles_labels),rev_cyt_tertiles)))
 mod_rev_pathway_activities_df <- reshape2::melt(mod_rev_pathway_activities,id.vars=c("constru_tertiles_labels","rev_cyt_tertiles"))
 colnames(mod_rev_pathway_activities_df) <- c("Constru","Cyt","Pathway","Value")
