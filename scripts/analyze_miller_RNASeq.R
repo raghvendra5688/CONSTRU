@@ -140,7 +140,7 @@ save(final_all_expr_df,file="Data/Training_Combined.Rdata")
 mapping_df <- as.data.frame(cbind(c(rep("GSE82191",ncol(final_gse82191_expr_df)), rep("GSE9891",ncol(final_gse9891_expr_df)), rep("OV3",ncol(final_gseov3_expr_df))),
                                   c(colnames(final_gse82191_expr_df),colnames(final_gse9891_expr_df), colnames(final_gseov3_expr_df))))
 colnames(mapping_df) <- c("Training_Data","Sample_Name")
-write.table(mapping_df, "results/Sample_Name_Mapping_df.csc", row.names=F, col.names=T, sep=",", quote=F)
+write.table(mapping_df, "results/Sample_Name_Mapping_df.csv", row.names=F, col.names=T, sep=",", quote=F)
 
 #Load the frequently dysregulated pathways in cancer
 load("Data/Selected.pathways.3.4.RData")
