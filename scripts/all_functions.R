@@ -19,6 +19,104 @@ registerDoMC(cores=20)
 
 setwd(".")
 
+make_pathway_activity_heatmap <- function(x1, x2, x3, final_all_expr_df, pathway_activities, immune_cell_type_concentrations, immune_activities){
+  col_fun1 <- colorRamp2(c(-1,0,1.0),c("blue","white","red"))
+  constru_tertiles <- c(x1[[3]],x2[[3]],x3[[3]])
+  cyt_tertiles <- c(x1[[2]], x2[[2]], x3[[2]])
+  
+  #Order the ids by CONSTRU scores followed by Cyt scores
+  order_ids <- order(constru_tertiles, cyt_tertiles)
+  rev_constru_tertiles <- constru_tertiles[order_ids]
+  rev_cyt_tertiles <- cyt_tertiles[order_ids]
+  rev_pathway_activities <- pathway_activities[,order_ids]
+  rev_immune_cell_type_concentrations <- immune_cell_type_concentrations[,order_ids]
+  rev_immune_activities <- immune_activities[,order_ids]
+  rev_final_all_expr_df <- final_all_expr_df[,order_ids]
+  
+  #Get the different levels or combinations for constru and cyt tertiles
+  unique_constru_tertiles <- unique(rev_constru_tertiles)
+  unique_cyt_tertiles <- unique(rev_cyt_tertiles)
+  column_split_values <- NULL
+  k <- 0
+  for (i in unique_constru_tertiles)
+  {
+    for (j in unique_cyt_tertiles)
+    {
+      ids <- which(rev_constru_tertiles==i & rev_cyt_tertiles==j)   
+      column_split_values <- c(column_split_values,rep(paste0(k),length(ids)))
+      k <- k+1
+    }
+  }
+  
+  column_split_values <- factor(column_split_values)
+  ha = HeatmapAnnotation(
+    empty = anno_empty(border = FALSE, height = unit(8, "mm")),
+    Cyt = anno_block(gp = gpar(fill = c("black","red","darkgreen","black","red","darkgreen","black","red","darkgreen")), 
+                     labels = c("Cyt low","Cyt int","Cyt high","Cyt low","Cyt int","Cyt high","Cyt low","Cyt int","Cyt high")),
+    simple_anno_size = unit(8, "mm"),
+    annotation_name_gp = gpar(fontsize=11, family="sans",col="white"),
+    annotation_legend_param = list(directon="horizontal"),
+    show_legend=F)
+  ht_pathway = Heatmap(matrix=rev_pathway_activities, col_fun1, 
+                       name = "Pathway Activities", column_title = qq("Pathway Activities across Constru Groups"),
+                       width = unit(15, "cm"),
+                       height = unit(15, "cm"),
+                       cluster_columns = F,
+                       cluster_rows = F,
+                       row_names_centered = F,
+                       show_row_names = T,
+                       row_labels = rownames(rev_pathway_activities),
+                       row_names_max_width = max_text_width(rownames(rev_pathway_activities)),
+                       column_split = column_split_values,
+                       cluster_column_slices=F,
+                       show_column_names = F,
+                       raster_quality = 2,
+                       top_annotation = ha,
+                       column_title_rot = 0,
+                       column_title_side = "bottom",
+                       column_dend_side = "top",
+                       column_title_gp = gpar(fontsize=11, family="sans"),
+                       row_names_gp = gpar(fontsize=9, family="sans"),
+                       use_raster = T,
+                       column_gap = unit(1, "mm"),
+                       border_gp = gpar(col = "black", lty = 1),
+                       border = T,
+                       heatmap_legend_param = list(direction = "horizontal")
+  )
+  return(list(ht_pathway, rev_immune_cell_type_concentrations, column_split_values, ha))
+}
+
+
+make_immune_conc_heatmap <- function(rev_immune_cell_type_concentrations, column_split_values, ha){
+  col_fun2 = colorRamp2(c(0,0.5),c("white","red"))
+  ht_immune_conc = Heatmap(matrix=as.matrix(rev_immune_cell_type_concentrations), col_fun2, 
+                           name = "Immune Cell Fractions", column_title = qq("Immune Cell Fractions across Constru Groups"),
+                           width = unit(15, "cm"),
+                           height = unit(15, "cm"),
+                           cluster_columns = F,
+                           cluster_rows = F,
+                           row_names_centered = F,
+                           show_row_names = T,
+                           row_labels = rownames(rev_immune_cell_type_concentrations),
+                           row_names_max_width = max_text_width(rownames(rev_immune_cell_type_concentrations)),
+                           column_split = column_split_values,
+                           cluster_column_slices = T,
+                           show_column_names = F,
+                           raster_quality = 2,
+                           top_annotation = ha,
+                           column_title_rot = 0,
+                           column_title_side = "bottom",
+                           column_dend_side = "top",
+                           column_title_gp = gpar(fontsize=11, family="sans"),
+                           row_names_gp = gpar(fontsize=9, family="sans"),
+                           use_raster = T,
+                           column_gap = unit(1, "mm"),
+                           border_gp = gpar(col = "black", lty = 1),
+                           border = T,
+                           heatmap_legend_param = list(direction = "horizontal"))
+  return(ht_immune_conc)
+}
+
 #Perform the statistical test
 perform_stat_test <- function(input_df)
 {
