@@ -19,7 +19,7 @@ library(sva)
 loadfonts()
 registerDoMC(cores=20)
 
-setwd("~/QCRI_PostDoc/Raghav_Related/Lance_Miller_Related/CONSTRU/")
+setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
 
 source("scripts/all_functions.R")
 
@@ -142,4 +142,29 @@ group_block_anno = function(group, empty_anno, gp = gpar(),
 group_block_anno(1:3, "empty", gp = gpar(fill = "brown"), label = "Con low")
 group_block_anno(4:6, "empty", gp = gpar(fill = "orange"), label = "Con int")
 group_block_anno(7:9, "empty", gp = gpar(fill = "#FEDD00"), label = "Con high")
+dev.off()
+
+#Make the plot for Pathway + Immune Concentrations #############################
+################################################################################
+#Melt the dataset to perform wilcox Training between the tertiles: Cyt 3 vs Cyt 3 for Constru tertiles 1 vs 3
+train_pathway_out <- get_pathway_heatmap_with_comparisons(train_out)
+train_all_pathways <- get_all_heatmaps(train_pathway_out)
+
+test_pathway_out <- get_pathway_heatmap_with_comparisons(test_out)
+test_all_pathways <- get_all_heatmaps(test_pathway_out)
+
+ht_list <- train_all_pathways[[1]]+test_all_pathways[[1]]+train_all_pathways[[2]]+test_all_pathways[[2]]+train_all_pathways[[3]]+test_all_pathways[[3]]
+pdf(file="results/Training_Test_Pathway_Activities_Combined.pdf", height = 10, width = 10, fonts="sans")
+draw(ht_list, heatmap_legend_side="bottom")
+dev.off()
+
+#Melt the dataset to perform wilcox Training between the tertiles: ...
+train_immune_conc_out <- get_immune_conc_heatmap_with_comparisons(train_out)
+test_immune_conc_out <- get_immune_conc_heatmap_with_comparisons(test_out)
+
+train_immune_all_pathways <- get_immune_all_heatmaps(train_immune_conc_out)
+test_immune_all_pathways <- get_immune_all_heatmaps(test_immune_conc_out)
+ht_list_immune <- train_immune_all_pathways[[1]] + test_immune_all_pathways[[1]] + train_immune_all_pathways[[2]] + test_immune_all_pathways[[2]] + train_immune_all_pathways[[3]] + test_immune_all_pathways[[3]]
+pdf(file="results/Training_Test_Immune_Conc_Combined.pdf", height = 10, width = 15, fonts="sans")
+draw(ht_list_immune, heatmap_legend_side="bottom")
 dev.off()

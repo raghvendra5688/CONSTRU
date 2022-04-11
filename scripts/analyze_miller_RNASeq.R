@@ -475,7 +475,7 @@ ht_constru_cyt3_pathway <- make_bubble_plot_heatmap(activity_matrix = cyt_constr
 
 ht_list <- ht_rev_pathway+ht_constru_mean_pathway+ht_constru_cyt1_pathway+ht_constru_cyt2_pathway+ht_constru_cyt3_pathway
 pdf(file="results/Training_Pathway_Activities_Combined.pdf", height = 10, width = 10, fonts="sans")
-  draw(ht_list, heatmap_legend_side="bottom")
+draw(ht_list, heatmap_legend_side="bottom")
 dev.off()
 
 ##Get the mean and se information for pathway activites
