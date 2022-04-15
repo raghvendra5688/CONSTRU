@@ -1,0 +1,145 @@
+library(data.table)
+library(ggplot2)
+library(survival)
+library(glmnet)
+library(plotmo)
+library(doMC)
+library(dplyr)
+library(Matrix)
+library(preprocessCore)
+library(survcomp)
+library(survivalAnalysis)
+library(biomaRt)
+library(randomForestSRC)
+library(Hmisc)
+library(extrafont)
+library(Rttf2pt1)
+library(sva)
+loadfonts()
+registerDoMC(cores=10)
+
+setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
+
+source("scripts/all_functions.R")
+
+#Training data
+load("Data/GSE82191_all_info.Rdata")
+load("Data/GSE9891_all_info.Rdata")
+load("Data/GSEOV3_all_info.Rdata")
+new_gse82191_out <- gse82191_out
+new_gse9891_out <- gse9891_out
+new_gseov3_out <- gseov3_out
+
+#Test data
+load("Data/GSE140082_all_info.Rdata")
+load("Data/GSE32062_all_info.Rdata")
+load("Data/GSE53963_all_info.Rdata")
+new_gse140082_out <- gse82191_out
+new_gse32062_out <- gse9891_out
+new_gse53963_out <- gseov3_out
+
+#Load the final expression table
+final_gse82191_expr_df <- new_gse82191_out[[13]]
+final_gse9891_expr_df <- new_gse9891_out[[13]]
+final_gseov3_expr_df <- new_gseov3_out[[13]]
+common_genes <- intersect(intersect(rownames(final_gse82191_expr_df),rownames(final_gseov3_expr_df)),rownames(final_gse9891_expr_df))
+all_expr_df <- as.data.frame(cbind(final_gse82191_expr_df[common_genes,], final_gse9891_expr_df[common_genes,], final_gseov3_expr_df[common_genes,]))
+
+#Need to use combat in Training phase as expression distributions are very different
+final_all_expr_df = ComBat(dat=all_expr_df, batch=c(rep("A",ncol(final_gse82191_expr_df)),rep("B",ncol(final_gse9891_expr_df)),rep("C",ncol(final_gseov3_expr_df))), 
+                           mod=NULL, par.prior=TRUE, prior.plots=FALSE)
+
+#Load the test expression table
+final_gse140082_expr_df <- new_gse140082_out[[13]]
+final_gse32062_expr_df <- new_gse32062_out[[13]]
+final_gse53963_expr_df <- new_gse53963_out[[13]]
+common_genes <- intersect(intersect(rownames(final_gse140082_expr_df),rownames(final_gse32062_expr_df)),rownames(final_gse53963_expr_df))
+test_all_expr_df <- as.data.frame(cbind(final_gse140082_expr_df[common_genes,], final_gse32062_expr_df[common_genes,], final_gse53963_expr_df[common_genes,]))
+
+#Need to use combat in Training phase as expression distributions are very different
+final_test_all_expr_df = ComBat(dat=test_all_expr_df, batch=c(rep("A",ncol(final_gse140082_expr_df)),rep("B",ncol(final_gse32062_expr_df)),rep("C",ncol(final_gse53963_expr_df))), 
+                                mod=NULL, par.prior=TRUE, prior.plots=FALSE)
+
+#Load the frequently dysregulated pathways in cancer
+load("Data/Selected.pathways.3.4.RData")
+train_pathway_activities <- gsva(as.matrix(final_all_expr_df), gset.idx.list = Selected.pathways, kcdf="Gaussian", method="gsva", BPPARAM=SerialParam(), parallel.sz=10)
+test_pathway_activities <- gsva(as.matrix(final_test_all_expr_df), gset.idx.list = Selected.pathways, kcdf = "Gaussian", method = "gsva", BPPARAM=SerialParam(), parallel.sz=10)
+
+train_cyt_score <- c(new_gse82191_out[[2]], new_gse9891_out[[2]], new_gseov3_out[[2]])
+test_cyt_score <- c(new_gse140082_out[[2]], new_gse32062_out[[2]], new_gse53963_out[[2]])
+train_constru_tertiles <- c(new_gse82191_out[[3]], new_gse9891_out[[3]], new_gseov3_out[[3]])
+test_constru_tertiles <- c(new_gse140082_out[[3]], new_gse32062_out[[3]], new_gse53963_out[[3]])
+train_os_event <- c(new_gse82191_out[[4]], new_gse9891_out[[4]], new_gseov3_out[[4]])
+train_os_time <- c(new_gse82191_out[[5]], new_gse9891_out[[5]], new_gseov3_out[[5]])
+test_os_event <- c(new_gse140082_out[[4]], new_gse32062_out[[4]], new_gse53963_out[[4]])
+test_os_time <- c(new_gse140082_out[[5]], new_gse32062_out[[5]], new_gse53963_out[[5]])
+
+#Make the training and testing data frame
+train_df <- as.data.frame(cbind(data.frame(time=train_os_time, status=train_os_event, cyt_score = train_cyt_score, constru_tertiles = train_constru_tertiles), t(train_pathway_activities)))
+test_df <- as.data.frame(cbind(data.frame(time=test_os_time, status=test_os_event, cyt_score = test_cyt_score, constru_tertiles = test_constru_tertiles), t(test_pathway_activities)))
+
+pathway_names <- colnames(train_df)[c(5:ncol(train_df))]
+train_cox_proportional_df <- NULL
+for (k in 1:length(pathway_names))
+{
+  df <- data.frame(Score=train_df[,pathway_names[k]])
+  df %>% mutate(tertiles = ntile(Score, 3)) %>% mutate(tertiles = if_else(tertiles == 1, 'Low', if_else(tertiles == 2, 'Medium', 'High'))) -> out_pathway_df
+  high_group_ids <- which(out_pathway_df$tertiles=="High")
+  medium_group_ids <- which(out_pathway_df$tertiles=="Medium")
+  low_group_ids <- which(out_pathway_df$tertiles=="Low")
+  id_list <- list(high_group_ids, medium_group_ids, low_group_ids)
+  names(id_list) <- c("High","Medium","Low")
+  for (i in 1:length(id_list))
+  {
+    sample_ids <- id_list[[i]]
+    sample_df <- train_df[sample_ids,c(1:4)]
+    sample_cox <- coxph(Surv(time,status)~cyt_score, data = sample_df)
+    temp_cox <- get_cox_info(sample_cox)
+    temp_cox <- c(paste0(pathway_names[k],"_",names(id_list)[i]),temp_cox)
+    train_cox_proportional_df <- rbind(train_cox_proportional_df, temp_cox)
+  }
+}
+train_cox_proportional_df <- as.data.frame(train_cox_proportional_df)
+colnames(train_cox_proportional_df) <- c("Pathway_Combination","beta", "mean", "low", "upper", "HR", "wald.test", "p.value")
+rownames(train_cox_proportional_df) <- NULL
+train_cox_proportional_df$beta <- as.numeric(as.vector(train_cox_proportional_df$beta))
+train_cox_proportional_df$mean <- as.numeric(as.vector(train_cox_proportional_df$mean))
+train_cox_proportional_df$low <- as.numeric(as.vector(train_cox_proportional_df$low))
+train_cox_proportional_df$upper <- as.numeric(as.vector(train_cox_proportional_df$upper))
+train_cox_proportional_df$wald.test <- as.numeric(as.vector(train_cox_proportional_df$wald.test))
+train_cox_proportional_df$p.value <- as.numeric(as.vector(train_cox_proportional_df$p.value))
+train_cox_proportional_df$p.adjust <- signif(p.adjust(train_cox_proportional_df$p.value, method="fdr"),digits=2)
+write.table(x=train_cox_proportional_df,file="results/Training_Cox_Proportional_Pathway_Cytscore.csv",quote = F, row.names=F, col.names=T, sep="\t")
+
+################################################################################
+test_cox_proportional_df <- NULL
+for (k in 1:length(pathway_names))
+{
+  df <- data.frame(Score=test_df[,pathway_names[k]])
+  df %>% mutate(tertiles = ntile(Score, 3)) %>% mutate(tertiles = if_else(tertiles == 1, 'Low', if_else(tertiles == 2, 'Medium', 'High'))) -> out_pathway_df
+  high_group_ids <- which(out_pathway_df$tertiles=="High")
+  medium_group_ids <- which(out_pathway_df$tertiles=="Medium")
+  low_group_ids <- which(out_pathway_df$tertiles=="Low")
+  id_list <- list(high_group_ids, medium_group_ids, low_group_ids)
+  names(id_list) <- c("High","Medium","Low")
+  for (i in 1:length(id_list))
+  {
+    sample_ids <- id_list[[i]]
+    sample_df <- test_df[sample_ids,c(1:4)]
+    sample_cox <- coxph(Surv(time,status)~cyt_score, data = sample_df)
+    temp_cox <- get_cox_info(sample_cox)
+    temp_cox <- c(paste0(pathway_names[k],"_",names(id_list)[i]),temp_cox)
+    test_cox_proportional_df <- rbind(test_cox_proportional_df, temp_cox)
+  }
+}
+test_cox_proportional_df <- as.data.frame(test_cox_proportional_df)
+colnames(test_cox_proportional_df) <- c("Pathway_Combination","beta", "mean", "low", "upper", "HR", "wald.test", "p.value")
+rownames(test_cox_proportional_df) <- NULL
+test_cox_proportional_df$beta <- as.numeric(as.vector(test_cox_proportional_df$beta))
+test_cox_proportional_df$mean <- as.numeric(as.vector(test_cox_proportional_df$mean))
+test_cox_proportional_df$low <- as.numeric(as.vector(test_cox_proportional_df$low))
+test_cox_proportional_df$upper <- as.numeric(as.vector(test_cox_proportional_df$upper))
+test_cox_proportional_df$wald.test <- as.numeric(as.vector(test_cox_proportional_df$wald.test))
+test_cox_proportional_df$p.value <- as.numeric(as.vector(test_cox_proportional_df$p.value))
+test_cox_proportional_df$p.adjust <- signif(p.adjust(test_cox_proportional_df$p.value, method="fdr"),digits=2)
+write.table(x=test_cox_proportional_df,file="results/Testing_Cox_Proportional_Pathway_Cytscore.csv",quote = F, row.names=F, col.names=T, sep="\t")

@@ -583,3 +583,17 @@ get_immune_all_heatmaps <- function(train_immune_conc_out)
   ht_train_constru_cyt3_immune_conc <- make_bubble_plot_heatmap_immune(train_immune_conc_out[[4]], train_immune_conc_out[[5]], tertile=5)
   return(list(ht_rev_immune_conc, ht_train_constru_mean_immune_conc, ht_train_constru_cyt3_immune_conc))
 }
+
+get_cox_info <- function(x){
+  x <- summary(x)
+  p.value<-signif(x$wald["pvalue"], digits=2)
+  wald.test<-signif(x$wald["test"], digits=2)
+  beta<-signif(x$coef[1], digits=2); #coeficient beta
+  HR.mean <-signif(x$coef[2], digits=2); #exp(beta)
+  HR.confint.lower <- signif(x$conf.int[,"lower .95"], 2)
+  HR.confint.upper <- signif(x$conf.int[,"upper .95"],2)
+  HR <- paste0(HR.mean, " (", 
+               HR.confint.lower, "-", HR.confint.upper, ")")
+  res<-c(beta, HR.mean, HR.confint.lower, HR.confint.upper, HR, wald.test, p.value)
+  return(res)
+}
