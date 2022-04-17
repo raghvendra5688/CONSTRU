@@ -1,163 +1,163 @@
 Pathway_Combination	beta	mean	low	upper	HR	wald.test	p.value	p.adjust
-[HM] Hypoxia_High	-0.097	0.91	0.75	1.1	0.91 (0.75-1.1)	1.1	0.3	0.48
-[HM] Hypoxia_Medium	-0.17	0.84	0.69	1	0.84 (0.69-1)	3.1	0.08	0.32
-[HM] Hypoxia_Low	-0.11	0.89	0.72	1.1	0.89 (0.72-1.1)	1.1	0.29	0.48
-[HM] Mitotic spindle_High	-0.24	0.78	0.65	0.95	0.78 (0.65-0.95)	6.3	0.012	0.14
-[HM] Mitotic spindle_Medium	0.0046	1	0.83	1.2	1 (0.83-1.2)	0	0.96	0.97
-[HM] Mitotic spindle_Low	-0.048	0.95	0.78	1.2	0.95 (0.78-1.2)	0.22	0.64	0.8
-[HM] Wnt beta catenin signaling_High	-0.044	0.96	0.79	1.2	0.96 (0.79-1.2)	0.21	0.65	0.8
-[HM] Wnt beta catenin signaling_Medium	-0.027	0.97	0.79	1.2	0.97 (0.79-1.2)	0.07	0.79	0.86
-[HM] Wnt beta catenin signaling_Low	-0.21	0.81	0.66	0.99	0.81 (0.66-0.99)	4.4	0.036	0.22
-[HM] TGF beta signaling_High	-0.12	0.88	0.74	1.1	0.88 (0.74-1.1)	1.9	0.16	0.35
-[HM] TGF beta signaling_Medium	-0.16	0.85	0.7	1	0.85 (0.7-1)	2.3	0.13	0.32
-[HM] TGF beta signaling_Low	-0.057	0.94	0.77	1.2	0.94 (0.77-1.2)	0.31	0.58	0.76
-[HM] DNA repair_High	-0.14	0.87	0.71	1.1	0.87 (0.71-1.1)	2	0.16	0.35
-[HM] DNA repair_Medium	-0.11	0.89	0.73	1.1	0.89 (0.73-1.1)	1.3	0.26	0.46
-[HM] DNA repair_Low	-0.077	0.93	0.77	1.1	0.93 (0.77-1.1)	0.64	0.42	0.61
-[HM] G2M checkpoint_High	-0.27	0.76	0.62	0.93	0.76 (0.62-0.93)	7.5	0.0063	0.1
-[HM] G2M checkpoint_Medium	-0.15	0.86	0.71	1.1	0.86 (0.71-1.1)	2.2	0.14	0.32
-[HM] G2M checkpoint_Low	0.1	1.1	0.91	1.3	1.1 (0.91-1.3)	1.1	0.3	0.48
-[HM] Apoptosis_High	-0.24	0.78	0.64	0.96	0.78 (0.64-0.96)	5.8	0.016	0.14
-[HM] Apoptosis_Medium	0.0063	1	0.81	1.2	1 (0.81-1.2)	0	0.95	0.97
-[HM] Apoptosis_Low	-0.13	0.88	0.7	1.1	0.88 (0.7-1.1)	1.3	0.26	0.46
-[HM] Notch signaling_High	-0.018	0.98	0.82	1.2	0.98 (0.82-1.2)	0.04	0.84	0.9
-[HM] Notch signaling_Medium	-0.17	0.84	0.7	1	0.84 (0.7-1)	2.9	0.088	0.32
-[HM] Notch signaling_Low	-0.15	0.86	0.7	1.1	0.86 (0.7-1.1)	2	0.16	0.35
-[HM] Hedgehog signaling_High	-0.04	0.96	0.81	1.1	0.96 (0.81-1.1)	0.2	0.65	0.8
-[HM] Hedgehog signaling_Medium	-0.13	0.88	0.72	1.1	0.88 (0.72-1.1)	1.6	0.21	0.41
-[HM] Hedgehog signaling_Low	-0.16	0.85	0.7	1	0.85 (0.7-1)	2.3	0.13	0.32
-[HM] PI3K Akt mTOR signaling_High	-0.33	0.72	0.59	0.87	0.72 (0.59-0.87)	11	0.00096	0.052
-[HM] PI3K Akt mTOR signaling_Medium	0.05	1.1	0.87	1.3	1.1 (0.87-1.3)	0.26	0.61	0.78
-[HM] PI3K Akt mTOR signaling_Low	0.0034	1	0.82	1.2	1 (0.82-1.2)	0	0.97	0.97
-[HM] mTORC1 signaling_High	-0.21	0.81	0.66	0.99	0.81 (0.66-0.99)	4.4	0.036	0.22
-[HM] mTORC1 signaling_Medium	-0.06	0.94	0.77	1.1	0.94 (0.77-1.1)	0.36	0.55	0.75
-[HM] mTORC1 signaling_Low	-0.025	0.97	0.81	1.2	0.97 (0.81-1.2)	0.07	0.79	0.86
-[HM] E2F targets_High	-0.35	0.7	0.58	0.86	0.7 (0.58-0.86)	12	0.00056	0.045
-[HM] E2F targets_Medium	-0.11	0.9	0.74	1.1	0.9 (0.74-1.1)	1.1	0.29	0.48
-[HM] E2F targets_Low	0.15	1.2	0.96	1.4	1.2 (0.96-1.4)	2.4	0.12	0.32
-[HM] Epithelial mesenchymal transition_High	-0.13	0.88	0.73	1.1	0.88 (0.73-1.1)	1.9	0.17	0.36
-[HM] Epithelial mesenchymal transition_Medium	-0.1	0.91	0.75	1.1	0.91 (0.75-1.1)	1.1	0.3	0.48
-[HM] Epithelial mesenchymal transition_Low	-0.23	0.8	0.63	1	0.8 (0.63-1)	3.9	0.049	0.23
-[HM] Oxidative phosphorylation_High	-0.05	0.95	0.78	1.2	0.95 (0.78-1.2)	0.25	0.61	0.78
-[HM] Oxidative phosphorylation_Medium	-0.15	0.86	0.7	1.1	0.86 (0.7-1.1)	2.2	0.14	0.32
-[HM] Oxidative phosphorylation_Low	-0.11	0.89	0.75	1.1	0.89 (0.75-1.1)	1.5	0.22	0.42
-[HM] Glycolysis_High	-0.15	0.86	0.71	1	0.86 (0.71-1)	2.2	0.14	0.32
-[HM] Glycolysis_Medium	-0.068	0.93	0.78	1.1	0.93 (0.78-1.1)	0.52	0.47	0.67
-[HM] Glycolysis_Low	-0.1	0.9	0.74	1.1	0.9 (0.74-1.1)	1.1	0.29	0.48
-[HM] Reactive oxigen species pathway_High	-0.16	0.86	0.7	1	0.86 (0.7-1)	2.4	0.12	0.32
-[HM] Reactive oxigen species pathway_Medium	0.034	1	0.85	1.3	1 (0.85-1.3)	0.12	0.73	0.83
-[HM] Reactive oxigen species pathway_Low	-0.22	0.8	0.65	0.98	0.8 (0.65-0.98)	4.5	0.034	0.22
-[HM] p53 pathway_High	-0.15	0.86	0.7	1	0.86 (0.7-1)	2.2	0.13	0.32
-[HM] p53 pathway_Medium	0.0036	1	0.83	1.2	1 (0.83-1.2)	0	0.97	0.97
-[HM] p53 pathway_Low	-0.25	0.78	0.63	0.97	0.78 (0.63-0.97)	5	0.025	0.18
-[HM] UV response up_High	-0.15	0.86	0.71	1	0.86 (0.71-1)	2.3	0.13	0.32
-[HM] UV response up_Medium	-0.19	0.82	0.68	1	0.82 (0.68-1)	3.7	0.055	0.24
-[HM] UV response up_Low	0.052	1.1	0.87	1.3	1.1 (0.87-1.3)	0.27	0.6	0.78
-[HM] UV response down_High	-0.095	0.91	0.76	1.1	0.91 (0.76-1.1)	1.1	0.3	0.48
-[HM] UV response down_Medium	-0.12	0.89	0.73	1.1	0.89 (0.73-1.1)	1.5	0.22	0.42
-[HM] UV response down_Low	-0.12	0.89	0.73	1.1	0.89 (0.73-1.1)	1.3	0.26	0.46
-[HM] Angiogenesis_High	-0.077	0.93	0.77	1.1	0.93 (0.77-1.1)	0.69	0.41	0.61
-[HM] Angiogenesis_Medium	-0.1	0.91	0.74	1.1	0.91 (0.74-1.1)	0.95	0.33	0.51
-[HM] Angiogenesis_Low	-0.22	0.81	0.65	0.99	0.81 (0.65-0.99)	4.1	0.044	0.23
-[HM] KRAS signaling up_High	-0.18	0.84	0.68	1	0.84 (0.68-1)	2.6	0.11	0.32
-[HM] KRAS signaling up_Medium	-0.29	0.75	0.61	0.92	0.75 (0.61-0.92)	7.5	0.0062	0.1
-[HM] KRAS signaling up_Low	-0.14	0.87	0.68	1.1	0.87 (0.68-1.1)	1.1	0.28	0.48
-[HM] KRAS signaling down_High	-0.094	0.91	0.76	1.1	0.91 (0.76-1.1)	1	0.31	0.49
-[HM] KRAS signaling down_Medium	0.041	1	0.85	1.3	1 (0.85-1.3)	0.16	0.69	0.82
-[HM] KRAS signaling down_Low	-0.23	0.79	0.65	0.97	0.79 (0.65-0.97)	5.2	0.023	0.18
-[HM] Myc targets_High	-0.27	0.76	0.62	0.95	0.76 (0.62-0.95)	5.9	0.015	0.14
-[HM] Myc targets_Medium	-0.11	0.89	0.74	1.1	0.89 (0.74-1.1)	1.4	0.23	0.44
-[HM] Myc targets_Low	-0.0039	1	0.82	1.2	1 (0.82-1.2)	0	0.97	0.97
-[HM] Estrogen response_High	-0.16	0.86	0.7	1	0.86 (0.7-1)	2.5	0.12	0.32
-[HM] Estrogen response_Medium	-0.14	0.87	0.71	1.1	0.87 (0.71-1.1)	1.7	0.19	0.39
-[HM] Estrogen response_Low	-0.053	0.95	0.79	1.1	0.95 (0.79-1.1)	0.34	0.56	0.75
-[IPA] ERK MAPK Signaling_High	-0.14	0.87	0.72	1	0.87 (0.72-1)	2.4	0.13	0.32
-[IPA] ERK MAPK Signaling_Medium	-0.16	0.85	0.69	1	0.85 (0.69-1)	2.3	0.13	0.32
-[IPA] ERK MAPK Signaling_Low	-0.03	0.97	0.79	1.2	0.97 (0.79-1.2)	0.08	0.77	0.86
-[IPA] HMGB1 Signaling_High	-0.19	0.82	0.68	1	0.82 (0.68-1)	4	0.045	0.23
-[IPA] HMGB1 Signaling_Medium	-0.26	0.77	0.63	0.95	0.77 (0.63-0.95)	6.2	0.013	0.14
-[IPA] HMGB1 Signaling_Low	0.03	1	0.82	1.3	1 (0.82-1.3)	0.07	0.8	0.87
-[IPA] ErbB Signaling_High	-0.23	0.79	0.66	0.95	0.79 (0.66-0.95)	6.3	0.012	0.14
-[IPA] ErbB Signaling_Medium	-0.2	0.82	0.67	1	0.82 (0.67-1)	3.9	0.05	0.23
-[IPA] ErbB Signaling_Low	0.11	1.1	0.92	1.4	1.1 (0.92-1.4)	1.2	0.27	0.47
-[IPA] PTEN Signaling_High	-0.12	0.89	0.74	1.1	0.89 (0.74-1.1)	1.7	0.19	0.39
-[IPA] PTEN Signaling_Medium	-0.28	0.76	0.61	0.93	0.76 (0.61-0.93)	7.1	0.0078	0.11
-[IPA] PTEN Signaling_Low	0.014	1	0.83	1.2	1 (0.83-1.2)	0.02	0.89	0.94
-[IPA] PI3K AKT Signaling_High	-0.19	0.82	0.69	0.99	0.82 (0.69-0.99)	4.3	0.039	0.23
-[IPA] PI3K AKT Signaling_Medium	-0.13	0.88	0.72	1.1	0.88 (0.72-1.1)	1.6	0.21	0.41
-[IPA] PI3K AKT Signaling_Low	-0.057	0.94	0.77	1.2	0.94 (0.77-1.2)	0.3	0.59	0.77
-[IPA] HER 2 Signaling in Breast Cancer_High	-0.12	0.89	0.74	1.1	0.89 (0.74-1.1)	1.7	0.2	0.4
-[IPA] HER 2 Signaling in Breast Cancer_Medium	-0.2	0.82	0.67	0.99	0.82 (0.67-0.99)	4.1	0.042	0.23
-[IPA] HER 2 Signaling in Breast Cancer_Low	-0.064	0.94	0.76	1.2	0.94 (0.76-1.2)	0.34	0.56	0.75
-[IPA] mTOR Signaling_High	-0.075	0.93	0.78	1.1	0.93 (0.78-1.1)	0.67	0.41	0.61
-[IPA] mTOR Signaling_Medium	-0.17	0.84	0.69	1	0.84 (0.69-1)	2.8	0.091	0.32
-[IPA] mTOR Signaling_Low	-0.044	0.96	0.78	1.2	0.96 (0.78-1.2)	0.18	0.67	0.81
-[IPA] AMPK Signaling_High	-0.22	0.8	0.66	0.97	0.8 (0.66-0.97)	5	0.025	0.18
-[IPA] AMPK Signaling_Medium	-0.07	0.93	0.77	1.1	0.93 (0.77-1.1)	0.51	0.47	0.67
-[IPA] AMPK Signaling_Low	-0.016	0.98	0.81	1.2	0.98 (0.81-1.2)	0.03	0.87	0.93
-[IPA] p38 MAPK Signaling_High	-0.17	0.84	0.68	1	0.84 (0.68-1)	2.4	0.12	0.32
-[IPA] p38 MAPK Signaling_Medium	-0.08	0.92	0.76	1.1	0.92 (0.76-1.1)	0.66	0.42	0.61
-[IPA] p38 MAPK Signaling_Low	-0.19	0.83	0.64	1.1	0.83 (0.64-1.1)	2.1	0.15	0.34
-[IPA] Myc Mediated Apoptosis Signaling_High	-0.15	0.86	0.71	1	0.86 (0.71-1)	2.3	0.13	0.32
-[IPA] Myc Mediated Apoptosis Signaling_Medium	-0.16	0.85	0.71	1	0.85 (0.71-1)	2.9	0.088	0.32
-[IPA] Myc Mediated Apoptosis Signaling_Low	0.012	1	0.82	1.3	1 (0.82-1.3)	0.01	0.91	0.96
-[IPA] EGF Signaling_High	-0.16	0.85	0.7	1	0.85 (0.7-1)	2.8	0.097	0.32
-[IPA] EGF Signaling_Medium	-0.24	0.79	0.65	0.95	0.79 (0.65-0.95)	6	0.015	0.14
-[IPA] EGF Signaling_Low	0.11	1.1	0.91	1.4	1.1 (0.91-1.4)	1.1	0.3	0.48
-[IPA] VEGF Signaling_High	-0.15	0.86	0.72	1	0.86 (0.72-1)	2.4	0.12	0.32
-[IPA] VEGF Signaling_Medium	-0.19	0.83	0.68	1	0.83 (0.68-1)	3.8	0.05	0.23
-[IPA] VEGF Signaling_Low	0.0051	1	0.82	1.2	1 (0.82-1.2)	0	0.96	0.97
-[IPA] Estrogen Dependent Breast Cancer Signaling_High	-0.16	0.85	0.7	1	0.85 (0.7-1)	2.8	0.093	0.32
-[IPA] Estrogen Dependent Breast Cancer Signaling_Medium	-0.065	0.94	0.77	1.1	0.94 (0.77-1.1)	0.43	0.51	0.71
-[IPA] Estrogen Dependent Breast Cancer Signaling_Low	-0.037	0.96	0.79	1.2	0.96 (0.79-1.2)	0.13	0.72	0.83
-[IPA] TNFR1 Signaling_High	-0.15	0.86	0.71	1	0.86 (0.71-1)	2.3	0.13	0.32
-[IPA] TNFR1 Signaling_Medium	-0.22	0.8	0.66	0.97	0.8 (0.66-0.97)	5.1	0.023	0.18
-[IPA] TNFR1 Signaling_Low	0.029	1	0.83	1.3	1 (0.83-1.3)	0.07	0.79	0.86
-[IPA] ErbB2 ErbB3 Signaling_High	-0.28	0.76	0.63	0.91	0.76 (0.63-0.91)	8.3	0.004	0.1
-[IPA] ErbB2 ErbB3 Signaling_Medium	-0.061	0.94	0.77	1.1	0.94 (0.77-1.1)	0.36	0.55	0.75
-[IPA] ErbB2 ErbB3 Signaling_Low	0.086	1.1	0.89	1.3	1.1 (0.89-1.3)	0.71	0.4	0.61
-[IPA] UVC Induced MAPK Signaling_High	-0.16	0.85	0.7	1	0.85 (0.7-1)	2.5	0.12	0.32
-[IPA] UVC Induced MAPK Signaling_Medium	-0.14	0.87	0.72	1	0.87 (0.72-1)	2.2	0.14	0.32
-[IPA] UVC Induced MAPK Signaling_Low	-0.044	0.96	0.78	1.2	0.96 (0.78-1.2)	0.19	0.66	0.8
-[IPA] UVA Induced MAPK Signaling_High	-0.18	0.83	0.69	1	0.83 (0.69-1)	3.8	0.051	0.23
-[IPA] UVA Induced MAPK Signaling_Medium	-0.12	0.89	0.73	1.1	0.89 (0.73-1.1)	1.4	0.24	0.45
-[IPA] UVA Induced MAPK Signaling_Low	-0.0044	1	0.82	1.2	1 (0.82-1.2)	0	0.97	0.97
-[IPA] UVB Induced MAPK Signaling_High	-0.27	0.76	0.63	0.93	0.76 (0.63-0.93)	7.5	0.0063	0.1
-[IPA] UVB Induced MAPK Signaling_Medium	-0.036	0.96	0.8	1.2	0.96 (0.8-1.2)	0.14	0.71	0.83
-[IPA] UVB Induced MAPK Signaling_Low	-0.0049	1	0.81	1.2	1 (0.81-1.2)	0	0.96	0.97
-[IPA] ERK5 Signaling_High	-0.15	0.86	0.72	1	0.86 (0.72-1)	2.5	0.11	0.32
-[IPA] ERK5 Signaling_Medium	-0.12	0.89	0.73	1.1	0.89 (0.73-1.1)	1.4	0.24	0.45
-[IPA] ERK5 Signaling_Low	-0.073	0.93	0.76	1.1	0.93 (0.76-1.1)	0.49	0.48	0.68
-[IPA] Mismatch Repair in Eukaryotes_High	-0.46	0.63	0.51	0.78	0.63 (0.51-0.78)	18	2e-05	0.0032
-[IPA] Mismatch Repair in Eukaryotes_Medium	0.036	1	0.85	1.3	1 (0.85-1.3)	0.13	0.72	0.83
-[IPA] Mismatch Repair in Eukaryotes_Low	0.048	1	0.87	1.3	1 (0.87-1.3)	0.25	0.62	0.78
-[IPA] Telomere Extension by Telomerase_High	-0.17	0.84	0.7	1	0.84 (0.7-1)	3.4	0.067	0.28
-[IPA] Telomere Extension by Telomerase_Medium	-0.16	0.85	0.71	1	0.85 (0.71-1)	2.7	0.098	0.32
-[IPA] Telomere Extension by Telomerase_Low	0.073	1.1	0.87	1.3	1.1 (0.87-1.3)	0.44	0.5	0.7
-[TBI] Barrier genes_High	0.033	1	0.86	1.2	1 (0.86-1.2)	0.12	0.73	0.83
-[TBI] Barrier genes_Medium	-0.27	0.76	0.64	0.92	0.76 (0.64-0.92)	8.1	0.0044	0.1
-[TBI] Barrier genes_Low	-0.058	0.94	0.77	1.2	0.94 (0.77-1.2)	0.3	0.58	0.76
-[TBI] MAPK up genes_High	-0.039	0.96	0.8	1.2	0.96 (0.8-1.2)	0.17	0.68	0.82
-[TBI] MAPK up genes_Medium	-0.25	0.78	0.64	0.95	0.78 (0.64-0.95)	5.9	0.015	0.14
-[TBI] MAPK up genes_Low	-0.033	0.97	0.8	1.2	0.97 (0.8-1.2)	0.11	0.74	0.84
-[TBI] Phopholipase_High	-0.079	0.92	0.76	1.1	0.92 (0.76-1.1)	0.64	0.42	0.61
-[TBI] Phopholipase_Medium	-0.026	0.97	0.81	1.2	0.97 (0.81-1.2)	0.07	0.79	0.86
-[TBI] Phopholipase_Low	-0.21	0.81	0.67	0.99	0.81 (0.67-0.99)	4.3	0.038	0.23
-[LM] Proliferation_High	-0.28	0.75	0.62	0.92	0.75 (0.62-0.92)	8	0.0047	0.1
-[LM] Proliferation_Medium	-0.14	0.87	0.72	1	0.87 (0.72-1)	2.2	0.14	0.32
-[LM] Proliferation_Low	0.16	1.2	0.96	1.4	1.2 (0.96-1.4)	2.6	0.11	0.32
-[TPW] PI3Kgamma Signature_High	-0.035	0.97	0.79	1.2	0.97 (0.79-1.2)	0.12	0.73	0.83
-[TPW] PI3Kgamma Signature_Medium	-0.2	0.82	0.68	1	0.82 (0.68-1)	3.9	0.048	0.23
-[TPW] PI3Kgamma Signature_Low	-0.12	0.88	0.71	1.1	0.88 (0.71-1.1)	1.3	0.25	0.46
-[TPW] NOS1 Signature_High	-0.059	0.94	0.78	1.1	0.94 (0.78-1.1)	0.39	0.53	0.73
-[TPW] NOS1 Signature_Medium	-0.094	0.91	0.75	1.1	0.91 (0.75-1.1)	0.87	0.35	0.54
-[TPW] NOS1 Signature_Low	-0.15	0.86	0.71	1	0.86 (0.71-1)	2.2	0.13	0.32
-[TPW] SHC1/pSTAT3 Signature_High	-0.12	0.89	0.73	1.1	0.89 (0.73-1.1)	1.3	0.25	0.46
-[TPW] SHC1/pSTAT3 Signature_Medium	-0.12	0.88	0.73	1.1	0.88 (0.73-1.1)	1.6	0.2	0.4
-[TPW] SHC1/pSTAT3 Signature_Low	-0.29	0.74	0.59	0.95	0.74 (0.59-0.95)	5.7	0.017	0.14
-[TPW] Hypoxia/Adenosine Immune Cell Suppression_High	-0.19	0.83	0.67	1	0.83 (0.67-1)	3.3	0.068	0.28
-[TPW] Hypoxia/Adenosine Immune Cell Suppression_Medium	-0.049	0.95	0.77	1.2	0.95 (0.77-1.2)	0.21	0.64	0.8
-[TPW] Hypoxia/Adenosine Immune Cell Suppression_Low	-0.19	0.83	0.66	1	0.83 (0.66-1)	2.8	0.095	0.32
-[TPW] Immunogenic Cell Death (ICD)_High	-0.027	0.97	0.77	1.2	0.97 (0.77-1.2)	0.05	0.82	0.89
-[TPW] Immunogenic Cell Death (ICD)_Medium	-0.31	0.73	0.59	0.9	0.73 (0.59-0.9)	8.9	0.0028	0.1
-[TPW] Immunogenic Cell Death (ICD)_Low	-0.2	0.82	0.62	1.1	0.82 (0.62-1.1)	1.9	0.17	0.36
+[HM] Hypoxia_High	-0.087	0.92	0.77	1.1	0.92 (0.77-1.1)	0.96	0.33	0.52
+[HM] Hypoxia_Medium	-0.14	0.87	0.71	1.1	0.87 (0.71-1.1)	1.6	0.2	0.45
+[HM] Hypoxia_Low	-0.23	0.8	0.61	1	0.8 (0.61-1)	2.8	0.094	0.31
+[HM] Mitotic spindle_High	-0.24	0.78	0.63	0.98	0.78 (0.63-0.98)	4.7	0.03	0.2
+[HM] Mitotic spindle_Medium	-0.024	0.98	0.81	1.2	0.98 (0.81-1.2)	0.06	0.8	0.87
+[HM] Mitotic spindle_Low	-0.067	0.94	0.75	1.2	0.94 (0.75-1.2)	0.37	0.55	0.69
+[HM] Wnt beta catenin signaling_High	0.019	1	0.81	1.3	1 (0.81-1.3)	0.03	0.87	0.92
+[HM] Wnt beta catenin signaling_Medium	0.029	1	0.85	1.3	1 (0.85-1.3)	0.09	0.77	0.85
+[HM] Wnt beta catenin signaling_Low	-0.33	0.72	0.58	0.89	0.72 (0.58-0.89)	9	0.0027	0.087
+[HM] TGF beta signaling_High	-0.036	0.96	0.81	1.2	0.96 (0.81-1.2)	0.15	0.69	0.8
+[HM] TGF beta signaling_Medium	-0.22	0.81	0.64	1	0.81 (0.64-1)	3.4	0.064	0.25
+[HM] TGF beta signaling_Low	-0.14	0.87	0.69	1.1	0.87 (0.69-1.1)	1.6	0.21	0.45
+[HM] DNA repair_High	-0.13	0.88	0.71	1.1	0.88 (0.71-1.1)	1.4	0.24	0.46
+[HM] DNA repair_Medium	-0.13	0.87	0.7	1.1	0.87 (0.7-1.1)	1.4	0.23	0.46
+[HM] DNA repair_Low	-0.095	0.91	0.75	1.1	0.91 (0.75-1.1)	0.97	0.32	0.52
+[HM] G2M checkpoint_High	-0.29	0.75	0.59	0.95	0.75 (0.59-0.95)	5.8	0.016	0.16
+[HM] G2M checkpoint_Medium	-0.21	0.81	0.65	1	0.81 (0.65-1)	3.8	0.053	0.23
+[HM] G2M checkpoint_Low	0.092	1.1	0.92	1.3	1.1 (0.92-1.3)	1	0.32	0.52
+[HM] Apoptosis_High	-0.18	0.83	0.69	1	0.83 (0.69-1)	3.6	0.056	0.24
+[HM] Apoptosis_Medium	-0.021	0.98	0.77	1.2	0.98 (0.77-1.2)	0.03	0.86	0.91
+[HM] Apoptosis_Low	-0.19	0.83	0.61	1.1	0.83 (0.61-1.1)	1.5	0.22	0.46
+[HM] Notch signaling_High	-0.002	1	0.82	1.2	1 (0.82-1.2)	0	0.98	0.98
+[HM] Notch signaling_Medium	-0.12	0.89	0.71	1.1	0.89 (0.71-1.1)	1.1	0.29	0.48
+[HM] Notch signaling_Low	-0.22	0.8	0.65	1	0.8 (0.65-1)	4	0.045	0.22
+[HM] Hedgehog signaling_High	-0.014	0.99	0.81	1.2	0.99 (0.81-1.2)	0.02	0.88	0.92
+[HM] Hedgehog signaling_Medium	-0.13	0.88	0.71	1.1	0.88 (0.71-1.1)	1.5	0.22	0.46
+[HM] Hedgehog signaling_Low	-0.19	0.82	0.66	1	0.82 (0.66-1)	3	0.085	0.29
+[HM] PI3K Akt mTOR signaling_High	-0.24	0.79	0.65	0.95	0.79 (0.65-0.95)	6.2	0.013	0.16
+[HM] PI3K Akt mTOR signaling_Medium	0.022	1	0.82	1.3	1 (0.82-1.3)	0.04	0.84	0.9
+[HM] PI3K Akt mTOR signaling_Low	0.031	1	0.79	1.3	1 (0.79-1.3)	0.05	0.82	0.89
+[HM] mTORC1 signaling_High	-0.22	0.8	0.66	0.98	0.8 (0.66-0.98)	4.7	0.03	0.2
+[HM] mTORC1 signaling_Medium	-0.035	0.97	0.78	1.2	0.97 (0.78-1.2)	0.1	0.75	0.84
+[HM] mTORC1 signaling_Low	-0.0099	0.99	0.8	1.2	0.99 (0.8-1.2)	0.01	0.93	0.95
+[HM] E2F targets_High	-0.38	0.68	0.53	0.87	0.68 (0.53-0.87)	9.2	0.0024	0.087
+[HM] E2F targets_Medium	-0.22	0.8	0.65	0.99	0.8 (0.65-0.99)	4.2	0.041	0.22
+[HM] E2F targets_Low	0.18	1.2	1	1.4	1.2 (1-1.4)	4	0.045	0.22
+[HM] Epithelial mesenchymal transition_High	-0.08	0.92	0.76	1.1	0.92 (0.76-1.1)	0.68	0.41	0.59
+[HM] Epithelial mesenchymal transition_Medium	-0.13	0.88	0.72	1.1	0.88 (0.72-1.1)	1.4	0.23	0.46
+[HM] Epithelial mesenchymal transition_Low	-0.31	0.73	0.56	0.96	0.73 (0.56-0.96)	5.1	0.023	0.19
+[HM] Oxidative phosphorylation_High	-0.13	0.88	0.71	1.1	0.88 (0.71-1.1)	1.4	0.24	0.46
+[HM] Oxidative phosphorylation_Medium	-0.15	0.86	0.69	1.1	0.86 (0.69-1.1)	1.7	0.2	0.45
+[HM] Oxidative phosphorylation_Low	-0.075	0.93	0.77	1.1	0.93 (0.77-1.1)	0.65	0.42	0.59
+[HM] Glycolysis_High	-0.11	0.9	0.73	1.1	0.9 (0.73-1.1)	0.95	0.33	0.52
+[HM] Glycolysis_Medium	-0.095	0.91	0.75	1.1	0.91 (0.75-1.1)	0.92	0.34	0.53
+[HM] Glycolysis_Low	-0.14	0.87	0.71	1.1	0.87 (0.71-1.1)	1.6	0.21	0.45
+[HM] Reactive oxigen species pathway_High	-0.19	0.83	0.69	1	0.83 (0.69-1)	3.8	0.05	0.23
+[HM] Reactive oxigen species pathway_Medium	0.067	1.1	0.88	1.3	1.1 (0.88-1.3)	0.45	0.5	0.65
+[HM] Reactive oxigen species pathway_Low	-0.29	0.74	0.56	0.99	0.74 (0.56-0.99)	4.2	0.04	0.22
+[HM] p53 pathway_High	-0.1	0.9	0.75	1.1	0.9 (0.75-1.1)	1.2	0.27	0.47
+[HM] p53 pathway_Medium	-0.058	0.94	0.77	1.2	0.94 (0.77-1.2)	0.33	0.57	0.7
+[HM] p53 pathway_Low	-0.33	0.72	0.53	0.96	0.72 (0.53-0.96)	5	0.025	0.19
+[HM] UV response up_High	-0.11	0.89	0.73	1.1	0.89 (0.73-1.1)	1.3	0.26	0.47
+[HM] UV response up_Medium	-0.15	0.86	0.69	1.1	0.86 (0.69-1.1)	1.7	0.19	0.45
+[HM] UV response up_Low	-0.051	0.95	0.77	1.2	0.95 (0.77-1.2)	0.23	0.63	0.76
+[HM] UV response down_High	-0.048	0.95	0.79	1.1	0.95 (0.79-1.1)	0.26	0.61	0.74
+[HM] UV response down_Medium	-0.12	0.89	0.72	1.1	0.89 (0.72-1.1)	1.2	0.27	0.47
+[HM] UV response down_Low	-0.21	0.81	0.65	1	0.81 (0.65-1)	3.1	0.076	0.28
+[HM] Angiogenesis_High	-0.07	0.93	0.77	1.1	0.93 (0.77-1.1)	0.5	0.48	0.64
+[HM] Angiogenesis_Medium	-0.038	0.96	0.79	1.2	0.96 (0.79-1.2)	0.14	0.71	0.81
+[HM] Angiogenesis_Low	-0.34	0.71	0.55	0.91	0.71 (0.55-0.91)	7.2	0.0075	0.14
+[HM] KRAS signaling up_High	-0.15	0.86	0.71	1	0.86 (0.71-1)	2.5	0.12	0.36
+[HM] KRAS signaling up_Medium	-0.36	0.7	0.54	0.89	0.7 (0.54-0.89)	8.1	0.0045	0.1
+[HM] KRAS signaling up_Low	-0.15	0.86	0.61	1.2	0.86 (0.61-1.2)	0.78	0.38	0.55
+[HM] KRAS signaling down_High	-0.12	0.89	0.72	1.1	0.89 (0.72-1.1)	1.2	0.27	0.47
+[HM] KRAS signaling down_Medium	0.038	1	0.85	1.3	1 (0.85-1.3)	0.13	0.71	0.81
+[HM] KRAS signaling down_Low	-0.21	0.81	0.66	1	0.81 (0.66-1)	3.9	0.049	0.23
+[HM] Myc targets_High	-0.25	0.78	0.59	1	0.78 (0.59-1)	3.2	0.074	0.28
+[HM] Myc targets_Medium	-0.23	0.79	0.65	0.97	0.79 (0.65-0.97)	5.2	0.023	0.19
+[HM] Myc targets_Low	0.0071	1	0.84	1.2	1 (0.84-1.2)	0.01	0.94	0.95
+[HM] Estrogen response_High	-0.093	0.91	0.74	1.1	0.91 (0.74-1.1)	0.78	0.38	0.55
+[HM] Estrogen response_Medium	-0.14	0.87	0.7	1.1	0.87 (0.7-1.1)	1.6	0.21	0.45
+[HM] Estrogen response_Low	-0.13	0.88	0.73	1.1	0.88 (0.73-1.1)	1.7	0.19	0.45
+[IPA] ERK MAPK Signaling_High	-0.13	0.88	0.74	1	0.88 (0.74-1)	2.2	0.14	0.39
+[IPA] ERK MAPK Signaling_Medium	-0.14	0.87	0.69	1.1	0.87 (0.69-1.1)	1.4	0.25	0.47
+[IPA] ERK MAPK Signaling_Low	-0.083	0.92	0.7	1.2	0.92 (0.7-1.2)	0.36	0.55	0.69
+[IPA] HMGB1 Signaling_High	-0.16	0.86	0.72	1	0.86 (0.72-1)	2.9	0.088	0.3
+[IPA] HMGB1 Signaling_Medium	-0.23	0.79	0.62	1	0.79 (0.62-1)	3.5	0.06	0.24
+[IPA] HMGB1 Signaling_Low	-0.09	0.91	0.7	1.2	0.91 (0.7-1.2)	0.43	0.51	0.65
+[IPA] ErbB Signaling_High	-0.2	0.82	0.69	0.98	0.82 (0.69-0.98)	4.6	0.032	0.21
+[IPA] ErbB Signaling_Medium	-0.18	0.83	0.65	1.1	0.83 (0.65-1.1)	2.2	0.14	0.39
+[IPA] ErbB Signaling_Low	0.044	1	0.84	1.3	1 (0.84-1.3)	0.16	0.69	0.8
+[IPA] PTEN Signaling_High	-0.11	0.89	0.75	1.1	0.89 (0.75-1.1)	1.6	0.21	0.45
+[IPA] PTEN Signaling_Medium	-0.3	0.74	0.58	0.94	0.74 (0.58-0.94)	6	0.014	0.16
+[IPA] PTEN Signaling_Low	-0.023	0.98	0.77	1.2	0.98 (0.77-1.2)	0.03	0.85	0.91
+[IPA] PI3K AKT Signaling_High	-0.14	0.87	0.73	1	0.87 (0.73-1)	2.6	0.11	0.34
+[IPA] PI3K AKT Signaling_Medium	-0.22	0.8	0.64	1	0.8 (0.64-1)	3.8	0.051	0.23
+[IPA] PI3K AKT Signaling_Low	-0.019	0.98	0.76	1.3	0.98 (0.76-1.3)	0.02	0.89	0.92
+[IPA] HER 2 Signaling in Breast Cancer_High	-0.096	0.91	0.76	1.1	0.91 (0.76-1.1)	1.2	0.27	0.47
+[IPA] HER 2 Signaling in Breast Cancer_Medium	-0.24	0.79	0.63	0.98	0.79 (0.63-0.98)	4.5	0.035	0.21
+[IPA] HER 2 Signaling in Breast Cancer_Low	-0.099	0.91	0.69	1.2	0.91 (0.69-1.2)	0.51	0.48	0.64
+[IPA] mTOR Signaling_High	-0.062	0.94	0.78	1.1	0.94 (0.78-1.1)	0.43	0.51	0.65
+[IPA] mTOR Signaling_Medium	-0.19	0.83	0.67	1	0.83 (0.67-1)	3	0.085	0.29
+[IPA] mTOR Signaling_Low	-0.061	0.94	0.76	1.2	0.94 (0.76-1.2)	0.29	0.59	0.72
+[IPA] AMPK Signaling_High	-0.26	0.77	0.63	0.95	0.77 (0.63-0.95)	5.9	0.015	0.16
+[IPA] AMPK Signaling_Medium	-0.12	0.88	0.71	1.1	0.88 (0.71-1.1)	1.2	0.26	0.47
+[IPA] AMPK Signaling_Low	0.069	1.1	0.88	1.3	1.1 (0.88-1.3)	0.47	0.49	0.65
+[IPA] p38 MAPK Signaling_High	-0.088	0.92	0.76	1.1	0.92 (0.76-1.1)	0.85	0.36	0.54
+[IPA] p38 MAPK Signaling_Medium	-0.17	0.85	0.67	1.1	0.85 (0.67-1.1)	1.9	0.17	0.45
+[IPA] p38 MAPK Signaling_Low	-0.24	0.79	0.57	1.1	0.79 (0.57-1.1)	2.1	0.15	0.41
+[IPA] Myc Mediated Apoptosis Signaling_High	-0.15	0.86	0.71	1	0.86 (0.71-1)	2.3	0.13	0.38
+[IPA] Myc Mediated Apoptosis Signaling_Medium	-0.12	0.89	0.73	1.1	0.89 (0.73-1.1)	1.4	0.24	0.46
+[IPA] Myc Mediated Apoptosis Signaling_Low	-0.042	0.96	0.73	1.3	0.96 (0.73-1.3)	0.09	0.76	0.85
+[IPA] EGF Signaling_High	-0.075	0.93	0.77	1.1	0.93 (0.77-1.1)	0.6	0.44	0.61
+[IPA] EGF Signaling_Medium	-0.26	0.77	0.63	0.95	0.77 (0.63-0.95)	6.1	0.014	0.16
+[IPA] EGF Signaling_Low	0.046	1	0.82	1.3	1 (0.82-1.3)	0.14	0.71	0.81
+[IPA] VEGF Signaling_High	-0.14	0.87	0.72	1	0.87 (0.72-1)	2.2	0.14	0.39
+[IPA] VEGF Signaling_Medium	-0.17	0.84	0.68	1	0.84 (0.68-1)	2.6	0.1	0.32
+[IPA] VEGF Signaling_Low	-0.034	0.97	0.77	1.2	0.97 (0.77-1.2)	0.08	0.78	0.86
+[IPA] Estrogen Dependent Breast Cancer Signaling_High	-0.093	0.91	0.75	1.1	0.91 (0.75-1.1)	0.92	0.34	0.53
+[IPA] Estrogen Dependent Breast Cancer Signaling_Medium	-0.09	0.91	0.75	1.1	0.91 (0.75-1.1)	0.82	0.37	0.55
+[IPA] Estrogen Dependent Breast Cancer Signaling_Low	-0.12	0.89	0.7	1.1	0.89 (0.7-1.1)	0.87	0.35	0.54
+[IPA] TNFR1 Signaling_High	-0.12	0.89	0.74	1.1	0.89 (0.74-1.1)	1.4	0.23	0.46
+[IPA] TNFR1 Signaling_Medium	-0.27	0.77	0.62	0.95	0.77 (0.62-0.95)	5.9	0.015	0.16
+[IPA] TNFR1 Signaling_Low	0.095	1.1	0.84	1.4	1.1 (0.84-1.4)	0.47	0.49	0.65
+[IPA] ErbB2 ErbB3 Signaling_High	-0.22	0.8	0.67	0.97	0.8 (0.67-0.97)	5	0.026	0.19
+[IPA] ErbB2 ErbB3 Signaling_Medium	-0.035	0.97	0.78	1.2	0.97 (0.78-1.2)	0.1	0.75	0.84
+[IPA] ErbB2 ErbB3 Signaling_Low	0.049	1.1	0.83	1.3	1.1 (0.83-1.3)	0.16	0.68	0.8
+[IPA] UVC Induced MAPK Signaling_High	-0.073	0.93	0.77	1.1	0.93 (0.77-1.1)	0.56	0.45	0.62
+[IPA] UVC Induced MAPK Signaling_Medium	-0.14	0.87	0.71	1.1	0.87 (0.71-1.1)	1.8	0.18	0.45
+[IPA] UVC Induced MAPK Signaling_Low	-0.17	0.84	0.67	1.1	0.84 (0.67-1.1)	2	0.16	0.43
+[IPA] UVA Induced MAPK Signaling_High	-0.15	0.86	0.72	1	0.86 (0.72-1)	2.7	0.1	0.32
+[IPA] UVA Induced MAPK Signaling_Medium	-0.081	0.92	0.73	1.2	0.92 (0.73-1.2)	0.46	0.5	0.65
+[IPA] UVA Induced MAPK Signaling_Low	-0.089	0.92	0.72	1.2	0.92 (0.72-1.2)	0.5	0.48	0.64
+[IPA] UVB Induced MAPK Signaling_High	-0.17	0.84	0.7	1	0.84 (0.7-1)	3.2	0.075	0.28
+[IPA] UVB Induced MAPK Signaling_Medium	-0.12	0.89	0.71	1.1	0.89 (0.71-1.1)	1.2	0.28	0.47
+[IPA] UVB Induced MAPK Signaling_Low	0.0071	1	0.79	1.3	1 (0.79-1.3)	0	0.95	0.96
+[IPA] ERK5 Signaling_High	-0.12	0.89	0.74	1.1	0.89 (0.74-1.1)	1.6	0.2	0.45
+[IPA] ERK5 Signaling_Medium	-0.13	0.87	0.72	1.1	0.87 (0.72-1.1)	1.8	0.18	0.45
+[IPA] ERK5 Signaling_Low	-0.12	0.88	0.68	1.2	0.88 (0.68-1.2)	0.82	0.36	0.54
+[IPA] Mismatch Repair in Eukaryotes_High	-0.51	0.6	0.46	0.78	0.6 (0.46-0.78)	15	0.00011	0.018
+[IPA] Mismatch Repair in Eukaryotes_Medium	-0.059	0.94	0.77	1.2	0.94 (0.77-1.2)	0.34	0.56	0.7
+[IPA] Mismatch Repair in Eukaryotes_Low	0.078	1.1	0.9	1.3	1.1 (0.9-1.3)	0.71	0.4	0.58
+[IPA] Telomere Extension by Telomerase_High	-0.23	0.79	0.65	0.96	0.79 (0.65-0.96)	5.5	0.019	0.17
+[IPA] Telomere Extension by Telomerase_Medium	-0.14	0.87	0.71	1.1	0.87 (0.71-1.1)	1.8	0.18	0.45
+[IPA] Telomere Extension by Telomerase_Low	0.12	1.1	0.91	1.4	1.1 (0.91-1.4)	1.2	0.28	0.47
+[TBI] Barrier genes_High	0.13	1.1	0.94	1.4	1.1 (0.94-1.4)	1.7	0.19	0.45
+[TBI] Barrier genes_Medium	-0.36	0.7	0.56	0.87	0.7 (0.56-0.87)	9.8	0.0017	0.087
+[TBI] Barrier genes_Low	-0.099	0.91	0.73	1.1	0.91 (0.73-1.1)	0.84	0.36	0.54
+[TBI] MAPK up genes_High	0.049	1.1	0.87	1.3	1.1 (0.87-1.3)	0.27	0.6	0.73
+[TBI] MAPK up genes_Medium	-0.34	0.71	0.57	0.89	0.71 (0.57-0.89)	9.3	0.0023	0.087
+[TBI] MAPK up genes_Low	-0.047	0.95	0.76	1.2	0.95 (0.76-1.2)	0.17	0.68	0.8
+[TBI] Phopholipase_High	-0.072	0.93	0.76	1.1	0.93 (0.76-1.1)	0.49	0.48	0.64
+[TBI] Phopholipase_Medium	-0.023	0.98	0.81	1.2	0.98 (0.81-1.2)	0.06	0.8	0.87
+[TBI] Phopholipase_Low	-0.29	0.75	0.59	0.95	0.75 (0.59-0.95)	5.6	0.018	0.17
+[LM] Proliferation_High	-0.35	0.71	0.55	0.91	0.71 (0.55-0.91)	7.5	0.0063	0.13
+[LM] Proliferation_Medium	-0.21	0.81	0.67	0.99	0.81 (0.67-0.99)	4	0.044	0.22
+[LM] Proliferation_Low	0.19	1.2	1	1.4	1.2 (1-1.4)	4	0.044	0.22
+[TPW] PI3Kgamma Signature_High	0.011	1	0.83	1.2	1 (0.83-1.2)	0.01	0.91	0.94
+[TPW] PI3Kgamma Signature_Medium	-0.2	0.82	0.66	1	0.82 (0.66-1)	3.6	0.059	0.24
+[TPW] PI3Kgamma Signature_Low	-0.2	0.82	0.64	1	0.82 (0.64-1)	2.6	0.11	0.34
+[TPW] NOS1 Signature_High	-0.11	0.89	0.72	1.1	0.89 (0.72-1.1)	1	0.31	0.51
+[TPW] NOS1 Signature_Medium	-0.083	0.92	0.75	1.1	0.92 (0.75-1.1)	0.65	0.42	0.59
+[TPW] NOS1 Signature_Low	-0.13	0.88	0.72	1.1	0.88 (0.72-1.1)	1.6	0.21	0.45
+[TPW] SHC1/pSTAT3 Signature_High	-0.11	0.89	0.74	1.1	0.89 (0.74-1.1)	1.4	0.24	0.46
+[TPW] SHC1/pSTAT3 Signature_Medium	-0.11	0.9	0.74	1.1	0.9 (0.74-1.1)	1.3	0.26	0.47
+[TPW] SHC1/pSTAT3 Signature_Low	-0.51	0.6	0.42	0.85	0.6 (0.42-0.85)	8	0.0045	0.1
+[TPW] Hypoxia/Adenosine Immune Cell Suppression_High	-0.2	0.82	0.68	0.99	0.82 (0.68-0.99)	4.4	0.035	0.21
+[TPW] Hypoxia/Adenosine Immune Cell Suppression_Medium	-0.01	0.99	0.79	1.2	0.99 (0.79-1.2)	0.01	0.93	0.95
+[TPW] Hypoxia/Adenosine Immune Cell Suppression_Low	-0.3	0.74	0.53	1	0.74 (0.53-1)	3	0.085	0.29
+[TPW] Immunogenic Cell Death (ICD)_High	-0.1	0.9	0.75	1.1	0.9 (0.75-1.1)	1.3	0.26	0.47
+[TPW] Immunogenic Cell Death (ICD)_Medium	-0.35	0.7	0.54	0.92	0.7 (0.54-0.92)	6.7	0.0098	0.16
+[TPW] Immunogenic Cell Death (ICD)_Low	-0.24	0.79	0.52	1.2	0.79 (0.52-1.2)	1.3	0.25	0.47

@@ -15,10 +15,12 @@ library(Hmisc)
 library(extrafont)
 library(Rttf2pt1)
 library(sva)
+library(corrplot)
+library(gplots)
 loadfonts()
 registerDoMC(cores=10)
 
-setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
+setwd("~/QCRI_PostDoc/Raghav_Related/Lance_Miller_Related/CONSTRU/")
 
 source("scripts/all_functions.R")
 
@@ -65,8 +67,10 @@ load("Data/Selected.pathways.3.4.RData")
 train_pathway_activities <- gsva(as.matrix(final_all_expr_df), gset.idx.list = Selected.pathways, kcdf="Gaussian", method="gsva", BPPARAM=SerialParam(), parallel.sz=10)
 test_pathway_activities <- gsva(as.matrix(final_test_all_expr_df), gset.idx.list = Selected.pathways, kcdf = "Gaussian", method = "gsva", BPPARAM=SerialParam(), parallel.sz=10)
 
-train_cyt_score <- c(new_gse82191_out[[2]], new_gse9891_out[[2]], new_gseov3_out[[2]])
-test_cyt_score <- c(new_gse140082_out[[2]], new_gse32062_out[[2]], new_gse53963_out[[2]])
+#train_cyt_score <- c(new_gse82191_out[[2]], new_gse9891_out[[2]], new_gseov3_out[[2]])
+#test_cyt_score <- c(new_gse140082_out[[2]], new_gse32062_out[[2]], new_gse53963_out[[2]])
+train_cyt_score <- as.numeric(as.vector(colMeans(final_all_expr_df[c("GZMA","PRF1"),])))
+test_cyt_score <- as.numeric(as.vector(colMeans(final_test_all_expr_df[c("GZMA","PRF1"),])))
 train_constru_tertiles <- c(new_gse82191_out[[3]], new_gse9891_out[[3]], new_gseov3_out[[3]])
 test_constru_tertiles <- c(new_gse140082_out[[3]], new_gse32062_out[[3]], new_gse53963_out[[3]])
 train_os_event <- c(new_gse82191_out[[4]], new_gse9891_out[[4]], new_gseov3_out[[4]])
@@ -143,3 +147,33 @@ test_cox_proportional_df$wald.test <- as.numeric(as.vector(test_cox_proportional
 test_cox_proportional_df$p.value <- as.numeric(as.vector(test_cox_proportional_df$p.value))
 test_cox_proportional_df$p.adjust <- signif(p.adjust(test_cox_proportional_df$p.value, method="fdr"),digits=2)
 write.table(x=test_cox_proportional_df,file="results/Testing_Cox_Proportional_Pathway_Cytscore.csv",quote = F, row.names=F, col.names=T, sep="\t")
+
+##################################################################################
+correlation_matrix <- matrix(data=0, nrow=nrow(train_pathway_activities), ncol=2)
+pval_matrix <- matrix(data=0, nrow=nrow(train_pathway_activities), ncol=2)
+rownames(correlation_matrix) <- rownames(train_pathway_activities)
+colnames(correlation_matrix) <- c("Training","Test")
+rownames(pval_matrix) <- rownames(train_pathway_activities)
+colnames(pval_matrix) <- c("Training","Test")
+for (i in 1:nrow(train_pathway_activities))
+{
+  train_cor_info <- cor.test(train_pathway_activities[i,],train_cyt_score)
+  train_cor_p_value <- train_cor_info$p.value
+  train_cor_value <- as.numeric(train_cor_info$estimate)
+  correlation_matrix[i,1] <- train_cor_value
+  pval_matrix[i,1] <- train_cor_p_value
+  
+  test_cor_info <- cor.test(test_pathway_activities[i,],test_cyt_score)
+  test_cor_p_value <- test_cor_info$p.value
+  test_cor_value <- as.numeric(test_cor_info$estimate)
+  correlation_matrix[i,2] <- test_cor_value
+  pval_matrix[i,2] <- test_cor_p_value
+}
+pval_matrix[,1] <- p.adjust(pval_matrix[,1],method = "fdr")
+pval_matrix[,2] <- p.adjust(pval_matrix[,2], method="fdr")
+
+pdf("results/Correlation_Plot.pdf",height=16, width = 8)
+corrplot(corr=correlation_matrix, 
+         p.mat = pval_matrix,
+         type="full", insig="pch", sig.level =.05, pch.cex = 0.5, col=bluered(100), cl.pos = "b", col.lim = c(-0.7,0.7))
+dev.off()
