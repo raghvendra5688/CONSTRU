@@ -20,7 +20,7 @@ library(gplots)
 loadfonts()
 registerDoMC(cores=10)
 
-setwd("~/QCRI_PostDoc/Raghav_Related/Lance_Miller_Related/CONSTRU/")
+setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
 
 source("scripts/all_functions.R")
 
@@ -81,6 +81,7 @@ test_os_time <- c(new_gse140082_out[[5]], new_gse32062_out[[5]], new_gse53963_ou
 #Make the training and testing data frame
 train_df <- as.data.frame(cbind(data.frame(time=train_os_time, status=train_os_event, cyt_score = train_cyt_score, constru_tertiles = train_constru_tertiles), t(train_pathway_activities)))
 test_df <- as.data.frame(cbind(data.frame(time=test_os_time, status=test_os_event, cyt_score = test_cyt_score, constru_tertiles = test_constru_tertiles), t(test_pathway_activities)))
+save(train_df, test_df,file="Data/Training_Testing_OS.Rdata")
 
 pathway_names <- colnames(train_df)[c(5:ncol(train_df))]
 train_cox_proportional_df <- NULL
