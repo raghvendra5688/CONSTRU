@@ -597,3 +597,74 @@ get_cox_info <- function(x){
   res<-c(beta, HR.mean, HR.confint.lower, HR.confint.upper, HR, wald.test, p.value)
   return(res)
 }
+
+get_constru_scores <- function(gse67501_expr, gse67501_pData, gse65701_fData, all_genes, upper_tertile_genes, lower_tertile_genes)
+{
+  unique_genes <- unique(all_genes)
+  gse67501_final_expr <- NULL
+  for (i in 1:length(unique_genes))
+  {
+    ids <- which(all_genes==unique_genes[i])
+    if (length(ids)>1)
+    {
+      index <- which.max(rowSums(gse67501_expr[ids,]))
+      temp <- gse67501_expr[ids[index],]
+    }else{
+      temp <- gse67501_expr[ids,]
+    }
+    gse67501_final_expr <- rbind(gse67501_final_expr, temp)
+  }
+  gse67501_final_expr <- as.data.frame(gse67501_final_expr)
+  colnames(gse67501_final_expr) <- colnames(gse67501_expr)
+  rownames(gse67501_final_expr) <- unique_genes
+  
+  #Check if data is normalized
+  boxplot(gse67501_final_expr)
+  
+  gse67501_upper_tertile_expr <- colMeans(gse67501_final_expr[rownames(gse67501_final_expr) %in% upper_tertile_genes,])
+  gse67501_lower_tertile_expr <- colMeans(gse67501_final_expr[rownames(gse67501_final_expr) %in% lower_tertile_genes,])
+  gse67501_CONSTRU_scores <- as.numeric(gse67501_upper_tertile_expr-gse67501_lower_tertile_expr)
+  return(gse67501_CONSTRU_scores)
+}
+
+make_icr_vs_constru_plot <- function(data_df, icr_tertiles, constru_tertiles, titlename)
+{
+  g <- ggplot(data = data_df, aes(x=CONSTRU, y=ICR, col=Response)) + geom_point(size=3, aes(shape=Response2)) +
+    scale_color_manual(values = c("NR"="red","SD"="brown","CR"="cyan","PR"="blue")) + 
+    scale_shape_manual(name="Orig Response", values=c(18,19)) + ylim(c(0,1))+
+    xlab("CONSTRU score") + ylab("ICR score") + ggtitle(titlename) +
+    geom_vline(xintercept = as.numeric(constru_tertiles[1]),col="brown")+
+    geom_vline(xintercept = as.numeric(constru_tertiles[2]),col="#FEDD00")+
+    geom_hline(yintercept = as.numeric(icr_tertiles[1]),col="brown")+
+    geom_hline(yintercept = as.numeric(icr_tertiles[2]),col="#FEDD00")+
+    theme_classic() +
+    theme(axis.text.x = element_text(color = "grey20", size = 11, angle = 90, hjust = .5, vjust = .5, face = "plain"),
+          axis.text.y = element_text(color = "grey20", size = 11, angle = 0, hjust = 1, vjust = 0, face = "plain"),  
+          axis.title.x = element_text(color = "grey20", size = 14, angle = 0, hjust = .5, vjust = 0, face = "bold"),
+          axis.title.y = element_text(color = "grey20", size = 14, angle = 90, hjust = .5, vjust = .5, face = "bold"),
+          legend.text = element_text(color = "grey20", size = 11, face = "plain"),
+          legend.title = element_text(color = "grey20", size = 14, face = "bold"))
+  
+  return(g)
+}
+
+get_expression_df <- function(gse67501_expr, all_genes){
+  unique_genes <- unique(all_genes)
+  gse67501_final_expr <- NULL
+  for (i in 1:length(unique_genes))
+  {
+    ids <- which(all_genes==unique_genes[i])
+    if (length(ids)>1)
+    {
+      index <- which.max(rowSums(gse67501_expr[ids,]))
+      temp <- gse67501_expr[ids[index],]
+    }else{
+      temp <- gse67501_expr[ids,]
+    }
+    gse67501_final_expr <- rbind(gse67501_final_expr, temp)
+  }
+  gse67501_final_expr <- as.data.frame(gse67501_final_expr)
+  colnames(gse67501_final_expr) <- colnames(gse67501_expr)
+  rownames(gse67501_final_expr) <- unique_genes
+  return(gse67501_final_expr)
+}
