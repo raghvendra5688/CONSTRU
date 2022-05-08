@@ -14,10 +14,11 @@ library(GEOquery)
 library(survminer)
 library(survival)
 library(survivalAnalysis)
+library(ggsignif)
 loadfonts()
 registerDoMC(cores=20)
 
-setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
+setwd("~/QCRI_PostDoc/Raghav_Related/Lance_Miller_Related/CONSTRU/")
 
 load("Data/OV_gene_RNAseq_normalized_TP_filtered.Rdata")
 
@@ -149,13 +150,26 @@ rev_ov_tmb_info_df <- rev_ov_tmb_info_df[order(rev_ov_tmb_info_df$`TCGA Particip
 final_survival_df <- revised_survival_df[revised_survival_df$Subset_Sample %in% rev_ov_tmb_info_df$`TCGA Participant Barcode`,]
 final_survival_df <- final_survival_df[order(final_survival_df$Subset_Sample),]
 final_survival_df$Aneuploidy <- rev_ov_tmb_info_df$`Aneuploidy Score`
+final_survival_df$TMB <- rev_ov_tmb_info_df$`Nonsilent Mutation Rate`
 
 #Make the coxph model
-res.cox <- coxph(Surv(OS.time, OS) ~ CYT_Tertile+Aneuploidy, data = final_survival_df[final_survival_df$CONSTRU_Tertile==3,])
+res.cox <- coxph(Surv(OS.time, OS) ~ age+CYT_Tertile+Aneuploidy, data = final_survival_df[final_survival_df$CONSTRU_Tertile==3,])
 multivariate_cox <- summary(res.cox)
 multivariate_cox_df <- cox_as_data_frame(multivariate_cox,unmangle_dict = NULL,factor_id_sep = ":",sort_by = NULL)
+save(multivariate_cox_df,file="results/Multivariate_Cox_Model.Rdata")
 
 #Get the constru high info
 constru_high_survival_df <- final_survival_df[final_survival_df$CONSTRU_Tertile==3,]
-g_box <- ggplot(data=constru_high_survival_df,aes(x=CYT_Tertile,y=Aneuploidy))+geom_boxplot()
-
+constru_high_survival_df$CYT_Tertile <- as.character(as.vector(constru_high_survival_df$CYT_Tertile))
+g_box <- ggplot(data=constru_high_survival_df, aes(x=CYT_Tertile, y=TMB)) + 
+        geom_boxplot() + geom_jitter()+
+        geom_signif(comparisons = list(c("1","3")), 
+                    map_signif_level=TRUE,
+                    test = "t.test") +
+        theme_bw() + xlab("CYT Tertiles") + ylab("TMB")+#ylab("Aneuploidy") +
+        theme(axis.text.x = element_text(color = "grey20", size = 16, angle = 0, hjust = .5, vjust = .5, face = "plain"),
+        axis.text.y = element_text(color = "grey20", size = 12, angle = 0, hjust = 1, vjust = 0, face = "plain"),  
+        axis.title.x = element_text(color = "grey20", size = 12, angle = 0, hjust = .5, vjust = 0, face = "plain"),
+        axis.title.y = element_text(color = "grey20", size = 12, angle = 90, hjust = .5, vjust = .5, face = "plain"))
+ggsave(filename="results/TCGA_TMB_Across_CYT_Tertiles.pdf",plot = g_box, device = pdf(), height = 6, width= 5, units="in")
+dev.off()
