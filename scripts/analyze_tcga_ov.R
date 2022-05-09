@@ -18,7 +18,7 @@ library(ggsignif)
 loadfonts()
 registerDoMC(cores=20)
 
-setwd("~/QCRI_PostDoc/Raghav_Related/Lance_Miller_Related/CONSTRU/")
+setwd("~/Documents/Misc_Work/Other Work/Miller_Related/CONSTRU/")
 
 load("Data/OV_gene_RNAseq_normalized_TP_filtered.Rdata")
 
@@ -159,17 +159,34 @@ multivariate_cox_df <- cox_as_data_frame(multivariate_cox,unmangle_dict = NULL,f
 save(multivariate_cox_df,file="results/Multivariate_Cox_Model.Rdata")
 
 #Get the constru high info
-constru_high_survival_df <- final_survival_df[final_survival_df$CONSTRU_Tertile==3,]
-constru_high_survival_df$CYT_Tertile <- as.character(as.vector(constru_high_survival_df$CYT_Tertile))
-g_box <- ggplot(data=constru_high_survival_df, aes(x=CYT_Tertile, y=TMB)) + 
-        geom_boxplot() + geom_jitter()+
+#constru_high_survival_df <- final_survival_df[final_survival_df$CONSTRU_Tertile==3,]
+constru_survival_df <- final_survival_df
+constru_survival_df$CONSTRU_Tertile <- as.character(as.vector(constru_survival_df$CONSTRU_Tertile))
+g_box_tmb <- ggplot(data=constru_survival_df, aes(x=CONSTRU_Tertile, y=TMB)) + 
+        geom_boxplot(outlier.shape=NA) + geom_jitter(width=0.15, size=3, aes(colour=CYT_Tertile))+
         geom_signif(comparisons = list(c("1","3")), 
                     map_signif_level=TRUE,
                     test = "t.test") +
-        theme_bw() + xlab("CYT Tertiles") + ylab("TMB")+#ylab("Aneuploidy") +
+        theme_bw() + xlab("CONSTRU Tertiles") + ylab("TMB")+#ylab("Aneuploidy") +
+        scale_color_manual(values=c("black","red","darkgreen"))+
         theme(axis.text.x = element_text(color = "grey20", size = 16, angle = 0, hjust = .5, vjust = .5, face = "plain"),
-        axis.text.y = element_text(color = "grey20", size = 12, angle = 0, hjust = 1, vjust = 0, face = "plain"),  
+        axis.text.y = element_text(color = "grey20", size = 12, angle = 0, hjust = 0.5, vjust = 0.5, face = "plain"),  
         axis.title.x = element_text(color = "grey20", size = 12, angle = 0, hjust = .5, vjust = 0, face = "plain"),
         axis.title.y = element_text(color = "grey20", size = 12, angle = 90, hjust = .5, vjust = .5, face = "plain"))
-ggsave(filename="results/TCGA_TMB_Across_CYT_Tertiles.pdf",plot = g_box, device = pdf(), height = 6, width= 5, units="in")
+ggsave(filename="results/TCGA_TMB_Across_CONSTRU_Tertiles.pdf",plot = g_box_tmb, device = pdf(), height = 6, width= 5, units="in")
 dev.off()
+
+g_box_aneuploidy <- ggplot(data=constru_survival_df, aes(x=CONSTRU_Tertile, y=Aneuploidy)) + 
+  geom_boxplot(outlier.shape=NA) + geom_jitter(width=0.15, size=3, aes(colour=CYT_Tertile))+
+  geom_signif(comparisons = list(c("1","3")), 
+              map_signif_level=TRUE,
+              test = "t.test") +
+  theme_bw() + xlab("CONSTRU Tertiles") + ylab("Aneuploidy") +
+  scale_color_manual(values=c("black","red","darkgreen"))+
+  theme(axis.text.x = element_text(color = "grey20", size = 16, angle = 0, hjust = .5, vjust = .5, face = "plain"),
+        axis.text.y = element_text(color = "grey20", size = 12, angle = 0, hjust = 0.5, vjust = 0.5, face = "plain"),  
+        axis.title.x = element_text(color = "grey20", size = 12, angle = 0, hjust = .5, vjust = 0, face = "plain"),
+        axis.title.y = element_text(color = "grey20", size = 12, angle = 90, hjust = .5, vjust = .5, face = "plain"))
+ggsave(filename="results/TCGA_Aneuploidy_Across_CONSTRU_Tertiles.pdf",plot = g_box_aneuploidy, device = pdf(), height = 6, width= 5, units="in")
+dev.off()
+
