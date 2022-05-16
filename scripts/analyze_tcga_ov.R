@@ -190,3 +190,34 @@ g_box_aneuploidy <- ggplot(data=constru_survival_df, aes(x=CONSTRU_Tertile, y=An
 ggsave(filename="results/TCGA_Aneuploidy_Across_CONSTRU_Tertiles.pdf",plot = g_box_aneuploidy, device = pdf(), height = 6, width= 5, units="in")
 dev.off()
 
+#Get the list of all pathways
+load("Data/Selected.pathways.3.4.RData")
+pathway_activations <- gsva(log2_normalized_dataset, gset.idx.list = Selected.pathways, kcdf="Gaussian", method="gsva")
+pathway_activations <- pathway_activations[,order(colnames(pathway_activations))]
+subset_pathway_activations <- pathway_activations[,colnames(pathway_activations) %in% constru_survival_df$TCGA_Sample]
+
+library(Hmisc)
+library(corrplot)
+corr_matrix <- matrix(0, nrow=nrow(subset_pathway_activations), ncol=2)
+pval_matrix <- matrix(0, nrow=nrow(subset_pathway_activations), ncol=2)
+for (i in 1:nrow(subset_pathway_activations))
+{
+  pathway_activity <- subset_pathway_activations[i,]
+  anueploidy_score <- constru_survival_df$Aneuploidy
+  tmb_score <- constru_survival_df$TMB
+  temp_cor_anueploidy <- cor.test(x=pathway_activity, y=anueploidy_score, use="complete.obs", method="spearman")
+  temp_cor_tmb <- cor.test(x=pathway_activity, y=tmb_score, use="complete.obs", method="spearman")
+  corr_matrix[i,1] <- as.numeric(temp_cor_anueploidy$estimate)
+  corr_matrix[i,2] <- as.numeric(temp_cor_tmb$estimate)
+  pval_matrix[i,1] <- as.numeric(temp_cor_anueploidy$p.value)
+  pval_matrix[i,2] <- as.numeric(temp_cor_tmb$p.value)
+}
+rownames(corr_matrix) <- names(Selected.pathways)
+rownames(pval_matrix) <- names(Selected.pathways)
+colnames(corr_matrix) <- c("Anueploidy","TMB")
+colnames(pval_matrix) <- c("Anueploidy","TMB")
+
+#Make correlation plot
+pdf("results/TMB_vs_Pathway_Activations.pdf", height=15, width = 4, pointsize = 11)
+corrplot(corr_matrix, p.mat = pval_matrix, sig.level = 0.10,  addrect = 2, rect.col="blck", tl.cex=0.8, pch.cex = 3, number.cex=2, cl.pos = "b", cl.offset = 0.5, cl.align.text = "l", cl.ratio=0.1, cl.length = 2)
+dev.off()
