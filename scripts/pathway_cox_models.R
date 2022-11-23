@@ -100,12 +100,12 @@ for (k in 1:length(pathway_names))
     sample_df <- train_df[sample_ids,c(1:4)]
     sample_cox <- coxph(Surv(time,status)~cyt_score, data = sample_df)
     temp_cox <- get_cox_info(sample_cox)
-    temp_cox <- c(paste0(pathway_names[k],"_",names(id_list)[i]),temp_cox)
+    temp_cox <- c(pathway_names[k],names(id_list)[i],temp_cox)
     train_cox_proportional_df <- rbind(train_cox_proportional_df, temp_cox)
   }
 }
 train_cox_proportional_df <- as.data.frame(train_cox_proportional_df)
-colnames(train_cox_proportional_df) <- c("Pathway_Combination","beta", "mean", "low", "upper", "HR", "wald.test", "p.value")
+colnames(train_cox_proportional_df) <- c("Pathway", "Tertile","beta", "mean", "low", "upper", "HR", "wald.test", "p.value")
 rownames(train_cox_proportional_df) <- NULL
 train_cox_proportional_df$beta <- as.numeric(as.vector(train_cox_proportional_df$beta))
 train_cox_proportional_df$mean <- as.numeric(as.vector(train_cox_proportional_df$mean))
@@ -133,12 +133,12 @@ for (k in 1:length(pathway_names))
     sample_df <- test_df[sample_ids,c(1:4)]
     sample_cox <- coxph(Surv(time,status)~cyt_score, data = sample_df)
     temp_cox <- get_cox_info(sample_cox)
-    temp_cox <- c(paste0(pathway_names[k],"_",names(id_list)[i]),temp_cox)
+    temp_cox <- c(pathway_names[k],names(id_list)[i],temp_cox)
     test_cox_proportional_df <- rbind(test_cox_proportional_df, temp_cox)
   }
 }
 test_cox_proportional_df <- as.data.frame(test_cox_proportional_df)
-colnames(test_cox_proportional_df) <- c("Pathway_Combination","beta", "mean", "low", "upper", "HR", "wald.test", "p.value")
+colnames(test_cox_proportional_df) <- c("Pathway","Tertile","beta", "mean", "low", "upper", "HR", "wald.test", "p.value")
 rownames(test_cox_proportional_df) <- NULL
 test_cox_proportional_df$beta <- as.numeric(as.vector(test_cox_proportional_df$beta))
 test_cox_proportional_df$mean <- as.numeric(as.vector(test_cox_proportional_df$mean))
@@ -148,6 +148,135 @@ test_cox_proportional_df$wald.test <- as.numeric(as.vector(test_cox_proportional
 test_cox_proportional_df$p.value <- as.numeric(as.vector(test_cox_proportional_df$p.value))
 test_cox_proportional_df$p.adjust <- signif(p.adjust(test_cox_proportional_df$p.value, method="fdr"),digits=2)
 write.table(x=test_cox_proportional_df,file="results/Testing_Cox_Proportional_Pathway_Cytscore.csv",quote = F, row.names=F, col.names=T, sep="\t")
+
+#Make the plot based on pathway tertiles and hazard ratio comparison for CYT score in each tertile
+################################################################################
+#Make the hazards matrix
+column_split_values <- c("Tertile low","Tertile int","Tertile high")
+train_pathway_hazards_matrix <- as.matrix(cbind(as.numeric(train_cox_proportional_df[train_cox_proportional_df$Tertile=="Low",]$mean), 
+                                                as.numeric(train_cox_proportional_df[train_cox_proportional_df$Tertile=="Medium",]$mean), 
+                                                as.numeric(train_cox_proportional_df[train_cox_proportional_df$Tertile=="High",]$mean)))
+colnames(train_pathway_hazards_matrix) <- column_split_values
+rownames(train_pathway_hazards_matrix) <- pathway_names
+train_pathway_pval_matrix <- as.matrix(cbind(as.numeric(train_cox_proportional_df[train_cox_proportional_df$Tertile=="Low",]$p.value), 
+                                             as.numeric(train_cox_proportional_df[train_cox_proportional_df$Tertile=="Medium",]$p.value), 
+                                             as.numeric(train_cox_proportional_df[train_cox_proportional_df$Tertile=="High",]$p.value)))
+colnames(train_pathway_pval_matrix) <- column_split_values
+rownames(train_pathway_pval_matrix) <- pathway_names
+
+test_pathway_hazards_matrix <- as.matrix(cbind(as.numeric(test_cox_proportional_df[test_cox_proportional_df$Tertile=="Low",]$mean), 
+                                                as.numeric(test_cox_proportional_df[test_cox_proportional_df$Tertile=="Medium",]$mean), 
+                                                as.numeric(test_cox_proportional_df[test_cox_proportional_df$Tertile=="High",]$mean)))
+colnames(test_pathway_hazards_matrix) <- column_split_values
+rownames(test_pathway_hazards_matrix) <- pathway_names
+test_pathway_pval_matrix <- as.matrix(cbind(as.numeric(test_cox_proportional_df[test_cox_proportional_df$Tertile=="Low",]$p.value), 
+                                             as.numeric(test_cox_proportional_df[test_cox_proportional_df$Tertile=="Medium",]$p.value), 
+                                             as.numeric(test_cox_proportional_df[test_cox_proportional_df$Tertile=="High",]$p.value)))
+colnames(test_pathway_pval_matrix) <- column_split_values
+rownames(test_pathway_pval_matrix) <- pathway_names
+
+#Make the heatmap
+column_split_values <- factor(column_split_values, levels = c("Tertile low","Tertile int","Tertile high"))
+ha = HeatmapAnnotation(
+  #empty = anno_empty(border = FALSE, height = unit(8, "mm")),
+  Con = anno_block(gp = gpar(fill = c("brown","orange","#FEDD00"))), 
+  show_legend=F)
+col_fun1 <- colorRamp2(c(0.5,1,1.5),c("blue","white","red"))
+ht_pathway_train = Heatmap(matrix=train_pathway_hazards_matrix, col_fun1, 
+                       name = "Hazards Ratio", column_title = qq("Hazards for CYT score across Pathway Tertiles in Training Set"),
+                       cell_fun = function(j, i, x, y, width, height, fill) {
+                         grid.rect(x = x, y = y, width = width, height = height, 
+                                   gp = gpar(col = "grey", fill = NA))
+                         if (train_pathway_pval_matrix[i,j]<0.05 & train_pathway_pval_matrix[i,j]>0.01)
+                         {
+                           grid.text(sprintf("*"), x, y, gp = gpar(fontsize = 11))
+                         }
+                         else if (train_pathway_pval_matrix[i,j]<0.01 & train_pathway_pval_matrix[i,j]>0.0001)
+                         {
+                           grid.text(sprintf("**"),x,y, gp=gpar(fontsize=11))
+                         }
+                         else if (train_pathway_pval_matrix[i,j]<1e-4)
+                         {
+                           grid.text(sprintf("***"),x,y, gp=gpar(fontsize=11))
+                         }
+                       },
+                       width = unit(6, "cm"),
+                       height = unit(15, "cm"),
+                       cluster_columns = F,
+                       cluster_rows = F,
+                       row_names_centered = F,
+                       show_row_names = T,
+                       row_labels = rownames(train_pathway_hazards_matrix),
+                       row_names_max_width = max_text_width(rownames(train_pathway_hazards_matrix)),
+                       column_split = column_split_values,
+                       cluster_column_slices=F,
+                       show_column_names = T,
+                       raster_quality = 2,
+                       top_annotation = ha,
+                       column_title_rot = 0,
+                       column_title_side = "top",
+                       column_dend_side = "top",
+                       column_names_side = "top",
+                       column_title_gp = gpar(fontsize=11, family="sans"),
+                       row_names_gp = gpar(fontsize=9, family="sans"),
+                       use_raster = T,
+                       column_gap = unit(1, "mm"),
+                       border_gp = gpar(col = "black", lty = 1),
+                       border = T,
+                       heatmap_legend_param = list(direction = "horizontal")
+)
+pdf("results/Training_Cox_Proportional_Pathway_Tertiles_CYT_Score.pdf",height = 10, width=6)
+draw(ht_pathway_train, heatmap_legend_side="bottom")
+dev.off()
+
+#Make the figure for the test set
+ht_pathway_test = Heatmap(matrix=test_pathway_hazards_matrix, col_fun1, 
+                      name = "Hazards Ratio", column_title = qq("Hazards for CYT score across Pathway Tertiles in Test Set"),
+                      cell_fun = function(j, i, x, y, width, height, fill) {
+                        grid.rect(x = x, y = y, width = width, height = height, 
+                                  gp = gpar(col = "grey", fill = NA))
+                        if (test_pathway_pval_matrix[i,j]<0.05 & test_pathway_pval_matrix[i,j]>0.01)
+                        {
+                          grid.text(sprintf("*"), x, y, gp = gpar(fontsize = 11))
+                        }
+                        else if (test_pathway_pval_matrix[i,j]<0.01 & test_pathway_pval_matrix[i,j]>0.0001)
+                        {
+                          grid.text(sprintf("**"),x,y, gp=gpar(fontsize=11))
+                        }
+                        else if (test_pathway_pval_matrix[i,j]<1e-4)
+                        {
+                          grid.text(sprintf("***"),x,y, gp=gpar(fontsize=11))
+                        }
+                      },
+                      width = unit(6, "cm"),
+                      height = unit(15, "cm"),
+                      cluster_columns = F,
+                      cluster_rows = F,
+                      row_names_centered = F,
+                      show_row_names = T,
+                      row_labels = rownames(test_pathway_hazards_matrix),
+                      row_names_max_width = max_text_width(rownames(test_pathway_hazards_matrix)),
+                      column_split = column_split_values,
+                      cluster_column_slices=F,
+                      show_column_names = T,
+                      raster_quality = 2,
+                      top_annotation = ha,
+                      column_title_rot = 0,
+                      column_title_side = "top",
+                      column_dend_side = "top",
+                      column_names_side = "top",
+                      column_title_gp = gpar(fontsize=11, family="sans"),
+                      row_names_gp = gpar(fontsize=9, family="sans"),
+                      use_raster = T,
+                      column_gap = unit(1, "mm"),
+                      border_gp = gpar(col = "black", lty = 1),
+                      border = T,
+                      heatmap_legend_param = list(direction = "horizontal")
+)
+pdf("results/Test_Cox_Proportional_Pathway_Tertiles_CYT_Score.pdf",height = 10, width=6)
+draw(ht_pathway_test, heatmap_legend_side="bottom")
+dev.off()
+
 
 ##################################################################################
 correlation_matrix <- matrix(data=0, nrow=nrow(train_pathway_activities), ncol=2)
