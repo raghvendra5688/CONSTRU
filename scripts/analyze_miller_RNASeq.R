@@ -161,6 +161,11 @@ rownames(immune_cell_type_concentrations) <- immune_cell_types
 #   immune_cell_type_concentrations[,i] <- immune_cell_type_concentrations[,i]/conc_values[i]
 # }
 
+#Perform immune AI
+
+
+
+
 #Build the complexheatmaps for the pathway activites, immune activities and immune deconvolutions
 ###############################################################################
 col_fun1 <- colorRamp2(c(-1,0,1.0),c("blue","white","red"))
